@@ -1,0 +1,42 @@
+SIM 2024 / IBGE 2024 PROCESSING REPORT
+=============================================
+
+SIM FILTERING
+
+rows_read: 1,527,369
+non_fetal: 1,527,369
+year_2024: 1,527,369
+invalid_or_other_year: 0
+valid_age: 1,523,072
+invalid_age: 4,297
+valid_sex: 1,522,864
+invalid_sex: 208
+valid_state: 1,522,864
+invalid_state: 0
+valid_cause: 152,128
+invalid_cause: 1,370,736
+final_deaths: 152,128
+
+POPULATION
+
+Rows: 4,914
+States: 27
+Population: 212,583,750
+
+FINAL OUTPUTS
+
+Total table rows: 4,914
+Cause table rows: 60,508
+ICD-10 categories: 293
+Total deaths: 152,128
+
+NOTES
+
+- Age is in completed years; 100 represents 100+.
+- Sex: M = male; F = female.
+- State is based on municipality of residence.
+- Cause is based on CAUSABAS (underlying cause).
+- Causes included: V01-V99, W00-W99, X00-X99, Y00-Y34.
+- Rates are deaths divided by the 2024 population.
+- These rates describe 2024, not future mortality forecasts.
+- Cause table contains observed causes only.
