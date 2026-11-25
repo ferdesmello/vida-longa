@@ -13,7 +13,7 @@ Esse projeto foi inspirado em [PolStats — Life](https://polstats.com/#!/life),
 Sirva o projeto localmente:
 
 ```bash
-python -m http.server
+python -m http.server 8000
 ```
 
 Depois abra `http://localhost:8000`.
