@@ -9,17 +9,17 @@
 <!-- Open Graph / Facebook / WhatsApp / LinkedIn -->
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://ferdesmello.github.io/vida-longa/" />
-<meta property="og:title" content="Vida Longa — E se as doenças deixassem de existir?" />
+<meta property="og:title" content="Vida Longa — E se não morrêssemos mais de doença alguma?" />
 <meta property="og:description" content="Quão longas seriam nossas vidas em um mundo sem doenças?" />
 <meta property="og:image" content="https://ferdesmello.github.io/vida-longa/assets/results_person.png" />
 <!-- Twitter / X -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:url" content="https://ferdesmello.github.io/vida-longa/" />
-<meta name="twitter:title" content="Vida Longa — E se as doenças deixassem de existir?" />
+<meta name="twitter:title" content="Vida Longa — E se não morrêssemos mais de doença alguma?" />
 <meta name="twitter:description" content="Quão longas seriam nossas vidas em um mundo sem doenças?" />
 <meta name="twitter:image" content="https://ferdesmello.github.io/vida-longa/assets/results_person.png" />
 
-<title>Vida Longa — e se as doenças deixassem de existir?</title>
+<title>Vida Longa — e se não morrêssemos mais de doença alguma?</title>
 <style>
 :root{--paper:#f5f1e9;--panel:#fffdf8;--ink:#29251f;--muted:#81796e;--rust:#b85d3f;--sage:#75806a;--line:#e8e0d4;--soft:#eee7db}
 *{box-sizing:border-box}
@@ -27,9 +27,9 @@ body{margin:0;background:var(--paper);color:var(--ink);font-family:system-ui,-ap
 header{padding:22px 6%;border-bottom:1px solid var(--line);font-weight:800;letter-spacing:1px}
 header span{color:var(--rust)}
 main{max-width:1050px;margin:auto;padding:0 22px}
-.hero{padding:55px 0 30px;max-width:720px}
+.hero{padding:55px 0 30px;max-width:820px}
 .eyebrow{color:var(--rust);font-size:10px;font-weight:800;letter-spacing:2px;margin:0 0 12px}
-h1{font:500 clamp(40px,7vw,70px)/1 Georgia,serif;letter-spacing:-2px;margin:0}
+h1{font:500 clamp(40px,7vw,70px)/1 Georgia,serif;letter-spacing:-2px;margin:0; text-wrap:balance;}
 h1 em{color:var(--rust);font-weight:400}
 .hero p:last-child{max-width:600px;color:var(--muted);line-height:1.8;margin-top:22px}
 .panel{background:var(--panel);border:1px solid var(--line);padding:26px;margin-bottom:18px;border-radius:4px}
@@ -105,7 +105,7 @@ footer a,details a{color:var(--rust)}
 
 <section class="hero">
   <p class="eyebrow">UM EXPERIMENTO MENTAL COM DADOS DE MORTALIDADE</p>
-  <h1>E se as doenças<br><em>deixassem de existir?</em></h1>
+  <h1>E se não morrêssemos mais<br><em>de doença alguma?</em></h1>
   <p>Sem câncer, sem infarto, sem COVID, sem envelhecimento. Sem causas internas, sobram só as causas externas: trânsito, quedas, afogamentos, violência e o azar em geral. Escolha um perfil (idade, sexo e estado) e descubra por quanto tempo essa pessoa duraria e a causa do fim de seus dias. Corpo e comportamento ficam "congelados" na idade escolhida: o risco nunca muda, só o calendário.</p>
 </section>
 
@@ -498,7 +498,7 @@ function makeImage(){
   x.fillStyle="#81796e"; x.font="20px system-ui,sans-serif"; x.fillText(`Cada barra: ${HD.unit}`+(HD.tailN?" · última barra = cauda":""),W/2,1176);
   x.fillStyle="#81796e"; x.font="24px system-ui,sans-serif";
   x.fillText(`Em ${fmt(ages.length)} vidas: média de ${fmt(ages.reduce((a,b)=>a+b,0)/ages.length)} anos, mediana de ${fmt(q(ages,.5))}`,W/2,1215);
-  x.fillText(`E se as doenças deixassem de existir? · ${REPO_URL.replace("https://","")}`,W/2,1265);
+  x.fillText(`E se não morrêssemos mais de doença alguma? · ${REPO_URL.replace("https://","")}`,W/2,1265);
   return c;
 }
 const blobOf = () => new Promise(r=>makeImage().toBlob(r,"image/png"));
