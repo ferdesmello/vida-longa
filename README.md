@@ -1,10 +1,12 @@
 # Vida Longa
 
-**Um experimento sobre quanto tempo daria para viver em um mundo sem doenças — usando dados brasileiros de mortalidade.**
+**Quão longas seriam nossas vidas em um mundo sem doenças?**
 
-E se câncer, infarto e gripe simplesmente saíssem de cena? Ainda sobrariam trânsito, quedas, afogamentos, violência e aquela dose diária de azar. O Vida Longa cria vidas possíveis a partir de causas externas de morte, congelando o perfil escolhido na idade selecionada.
+E se o transumanismo vingar (ainda mais do que já vingou) e encontrássemos a cura de todas as doenças e mesmo do envelhecimento? Sem as causas internas de morte, só sobrariam as externas: trânsito, quedas, afogamentos, violência e azar. A expectativa de vida poderia aumentar de menos de um século hoje para séculos ou milênios. O Vida Longa cria vidas possíveis a partir de causas externas de morte, "congelando" o perfil escolhido na idade selecionada.
 
-> Não é uma previsão de vida, não é uma consultoria médica e, infelizmente, não vende a fonte da juventude.
+Mas faz sentido esse tipo de extrapolação ou experimento? Talvez não muito, pois o fim das doenças e do envelhecimento provavelmente acarretaria uma mudança na condição humana tão grande que extrapolar da condição anterior não fosse realista. Mas ainda assim é algo divertido de fazer e pode dar uma ideia de todo o potencial que haveria nessa empreitada.
+
+Esse projeto foi inspirado em [PolStats — Life](https://polstats.com/#!/life), que faz algo semelhante com dados americanos. Aqui, porém, o experimento usa dados brasileiros: SIM/DATASUS para óbitos por causas externas e estimativas populacionais do IBGE.
 
 ## Ver o experimento
 
@@ -18,14 +20,14 @@ Depois abra `http://localhost:8000`.
 
 ## Como funciona
 
-Escolha sexo, estado e idade, execute entre 1.000 e 100.000 vidas simuladas e veja:
+Escolha idade, sexo e estado, execute entre 1.000 e 100.000 vidas simuladas e veja:
 
-- uma vida sorteada, até a provável desculpa para o atestado;
+- uma vida sorteada;
 - a causa de morte e sua posição na classificação CID-10;
 - a distribuição das idades ao morrer;
-- as causas externas mais frequentes para o perfil.
+- as causas externas mais em enos frequentes para o perfil.
 
-O modelo usa uma taxa anual calculada a partir do [SIM](https://dadosabertos.saude.gov.br/dataset/sim), aplica o risco de forma exponencial e escolhe uma causa proporcional ao número de óbitos observados. Quando o corpo fica congelado na idade escolhida, o risco não envelhece junto.
+O modelo usa uma taxa anual calculada a partir do [SIM](https://dadosabertos.saude.gov.br/dataset/sim), aplica o risco de forma exponencial e escolhe uma causa proporcional ao número de óbitos observados. Quando o perfil fica congelado na idade escolhida, o risco não envelhece junto.
 
 ## Capturas de tela
 
@@ -40,15 +42,6 @@ O modelo usa uma taxa anual calculada a partir do [SIM](https://dadosabertos.sau
 ### Muitas vidas
 
 ![Resultado para várias vidas](assets/results_people.png)
-
-## Dados
-
-- [Sistema de Informações sobre Mortalidade — SIM](https://dadosabertos.saude.gov.br/dataset/sim)
-- [Dicionário de Dados do SIM 2025](https://s3.sa-east-1.amazonaws.com/ckan.saude.gov.br/SIM/Dicionario_SIM_2025.pdf)
-- [Base da Mortalidade Geral 2024](https://dadosabertos.saude.gov.br/dataset/sim/resource/f0bdf83f-708e-4de9-9582-959055844ae9)
-- [População estimada — IBGE](https://www.ibge.gov.br/estatisticas/sociais/populacao/9109-populacao-estimada.html)
-
-Os dados originais ficam em `data/`; os CSVs usados pela página são gerados em `data/processed_data/`.
 
 ## Estrutura do repositório
 
@@ -72,6 +65,11 @@ vida-longa/
     └── process_mortality.py
 ```
 
-## Inspiração
+## Dados
 
-Este projeto foi inspirado em [PolStats — Life](https://polstats.com/#!/life). Aqui, porém, o experimento usa dados brasileiros: SIM/DATASUS para óbitos por causas externas e estimativas populacionais do IBGE.
+- [Sistema de Informações sobre Mortalidade — SIM](https://dadosabertos.saude.gov.br/dataset/sim)
+- [Dicionário de Dados do SIM 2025](https://s3.sa-east-1.amazonaws.com/ckan.saude.gov.br/SIM/Dicionario_SIM_2025.pdf)
+- [Base da Mortalidade Geral 2024](https://dadosabertos.saude.gov.br/dataset/sim/resource/f0bdf83f-708e-4de9-9582-959055844ae9)
+- [População estimada — IBGE](https://www.ibge.gov.br/estatisticas/sociais/populacao/9109-populacao-estimada.html)
+
+Os dados originais ficam em `data/`; os CSVs usados pela página são gerados em `data/processed_data/`.
