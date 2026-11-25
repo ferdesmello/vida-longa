@@ -56,6 +56,7 @@ Os dados originais ficam em `data/`; os CSVs usados pela página são gerados em
 vida-longa/
 ├── index.html
 ├── README.md
+├── LICENSE
 ├── assets/
 │   ├── selection.png
 │   ├── results_person.png
