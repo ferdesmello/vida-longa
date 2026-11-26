@@ -20,7 +20,7 @@
 	<meta name="twitter:description" content="Quão longas seriam nossas vidas em um mundo sem mortes por doenças ou envelhecimento?" />
 	<meta name="twitter:image" content="https://ferdesmello.github.io/vida-longa/assets/results_person.jpg" />
 
-	<title>Vida Longa — e se não morrêssemos mais de doença alguma?</title>
+	<title>Vida Longa — E se não morrêssemos mais de velhice ou doença alguma?</title>
 	<style>
 		:root {
 			--paper: #f5f1e9;
@@ -1086,7 +1086,7 @@
 			x.textAlign = "center"; x.fillStyle = "#29251f"; x.font = "800 34px system-ui,sans-serif"; x.fillText("VIDA", W / 2 - 52, 120); x.fillStyle = "#b85d3f"; x.fillText("LONGA", W / 2 + 62, 120);
 			x.fillStyle = "#81796e"; x.font = "30px system-ui,sans-serif";
 			x.fillText(`Perfil: ${profileLabel(true)}`, W / 2, 190);
-			x.fillText("Uma vida possível, sorteada ao acaso", W / 2, 265); x.fillText("num mundo sem doenças, duraria até", W / 2, 310);
+			x.fillText("Uma vida possível, sorteada ao acaso num mundo", W / 2, 265); x.fillText("sem mortes por doenças ou envelhecimento, duraria até", W / 2, 310);
 			x.fillStyle = "#b85d3f"; x.font = "230px Georgia,serif"; x.fillText(last.age === null ? "∞" : fmt(last.age), W / 2, 500);
 			x.fillStyle = "#81796e"; x.font = "34px system-ui,sans-serif"; x.fillText("anos", W / 2, 590);
 			x.fillStyle = "#b85d3f"; x.font = "800 24px system-ui,sans-serif"; x.fillText("C A U S A   D A   M O R T E", W / 2, 640);
@@ -1098,7 +1098,7 @@
 			x.fillStyle = "#81796e"; x.font = "20px system-ui,sans-serif"; x.fillText(`Cada barra: ${HD.unit}` + (HD.tailN ? " · última barra = cauda" : ""), W / 2, 1176);
 			x.fillStyle = "#81796e"; x.font = "24px system-ui,sans-serif";
 			x.fillText(`Em ${fmt(ages.length)} vidas: média de ${fmt(ages.reduce((a, b) => a + b, 0) / ages.length)} anos, mediana de ${fmt(q(ages, .5))}`, W / 2, 1215);
-			x.fillText(`E se não morrêssemos mais de doença alguma? · ${REPO_URL.replace("https://", "")}`, W / 2, 1265);
+			x.fillText(`E se não morrêssemos mais de doenças nem de velhice? · ${REPO_URL.replace("https://", "")}`, W / 2, 1265);
 			return c;
 		}
 		const blobOf = () => new Promise(r => makeImage().toBlob(r, "image/png"));
