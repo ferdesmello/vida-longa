@@ -1,14 +1,14 @@
 # Vida Longa
 
-**How long would our lives be in a world without disease or aging?**
+**How long would our lives be in a world without diseases or aging?**
 
-What if transhumanism won (even more than it already won) and we found cures for every disease and for aging itself? Without internal causes of death, only external ones would remain: falls, drownings, violence, and chance. Life expectancy could increase from less than a century today to centuries or even millennia. Vida Longa generates possible lifespans for a chosen biological age and selected profile based on external causes of death.
+What if transhumanism won (even more than it already has) and we found cures for every disease and for aging itself? Without internal causes of death, only external ones would remain: falls, drownings, violence, and chance. Life expectancy could increase from less than a century today to centuries or even millennia. Vida Longa generates possible lifespans for a chosen biological age and selected profile based on external causes of death.
 
 Does this kind of extrapolation or experiment make sense? Perhaps not very much, since the end of disease and aging would probably bring about a change in human conditions so profound that extrapolating from the previous condition would not be realistic. But it is still a fun experiment and can provide a sense of the potential that could be involved in such an endeavor.
 
 This project was inspired by [PolStats — Life](https://polstats.com/#!/life), which does something similar with American data. Here, however, the experiment uses Brazilian data: SIM/DATASUS for deaths caused by external factors and population estimates from IBGE.
 
-For the momment, the page is only available in Portuguese.
+For the moment, the page is only available in Portuguese.
 
 ## View the experiment
 
@@ -30,20 +30,6 @@ Choose an age, sex, and state, run between 1,000 and 100,000 simulated lives, an
 - the most and least frequent external causes of death for the profile.
 
 The model uses an annual mortality rate calculated for the selected profile from [SIM](https://dadosabertos.saude.gov.br/dataset/sim), applies the risk exponentially, and chooses a cause in proportion to the number of deaths observed in SIM. When the profile is frozen at the selected biological age, the risk does not age with it.
-
-## Screenshots
-
-### Profile
-
-![Profile selection](assets/selection.png)
-
-### One possible life
-
-![Result for one life](assets/results_person.png)
-
-### Many lives
-
-![Result for many lives](assets/results_people.png)
 
 ## Repository structure
 
@@ -69,6 +55,20 @@ vida-longa/
 └── scripts/
     └── process_mortality.py
 ```
+
+## Screenshots
+
+### Profile
+
+![Profile selection](assets/selection.jpg)
+
+### One possible life
+
+![Result for one life](assets/results_person.jpg)
+
+### Many lives
+
+![Result for many lives](assets/results_people.jpg)
 
 ## Data
 
