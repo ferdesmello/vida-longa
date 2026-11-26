@@ -2,7 +2,7 @@
 
 **How long would our lives be in a world without diseases or aging?**
 
-What if transhumanism won (even more than it already has) and we found cures for every disease and for aging itself? Without internal causes of death, only external ones would remain: falls, drownings, violence, and chance. Life expectancy could increase from less than a century today to centuries or even millennia. Vida Longa generates possible lifespans for a chosen biological age and selected profile based on external causes of death.
+What if transhumanism won (even more than it already has) and we found cures for every disease and for aging itself? Without internal causes of death, only external ones would remain: falls, drownings, violence, and chance. Life expectancy could increase from less than a century today to centuries or even millennia. Vida Longa generates possible lifespans for a chosen biological age and selected profile based on external causes of death. It is like to take a snapshot of mortality in Brazil in 2024 and ask what happens if that snapshot becomes a permanent property of humanity.
 
 Does this kind of extrapolation or experiment make sense? Perhaps not very much, since the end of disease and aging would probably bring about a change in human conditions so profound that extrapolating from the previous condition would not be realistic. But it is still a fun experiment and can provide a sense of the potential that could be involved in such an endeavor.
 

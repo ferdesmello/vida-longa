@@ -557,6 +557,10 @@
 				animation: none !important
 			}
 		}
+
+		input[type=range]:disabled {
+			opacity: .4
+		}
 	</style>
 </head>
 
@@ -577,11 +581,16 @@
 			<p class="eyebrow">01 / PERFIL</p>
 			<p class="instructions">
 				Defina uma idade, sexo e estado para descobrir quanto tempo essa pessoa poderia viver nesse mundo.
+				Escolha "Todos" (ou marque "Todas as idades") para usar os dados de todo o Brasil: uma pessoa média.
 			</p>
 			<div class="form">
-				<div><label for="age">Idade biológica: <output id="ageOut">30</output> anos</label><input id="age"
-						type="range" min="0" max="90" value="30"></div>
+				<div><label for="age">Idade biológica: <output id="ageOut">36 anos</output></label><input id="age"
+						type="range" min="0" max="90" value="36">
+					<label class="chk" style="margin-top:8px"><input type="checkbox" id="allAges"> Todas as
+						idades</label>
+				</div>
 				<div><label for="sex">Sexo</label><select id="sex">
+						<option value="ALL" selected>Todos</option>
 						<option value="F">Feminino</option>
 						<option value="M">Masculino</option>
 					</select></div>
@@ -709,6 +718,10 @@
 				<p>A causa é sorteada com peso proporcional ao número de óbitos de cada causa naquela idade biológica,
 					sexo e estado. O contador de idade sobe, mas só no calendário: o risco continua o da idade
 					biológica escolhida.</p>
+				<p>Ao escolher "Todos" em sexo ou estado, são somados óbitos e população de todas as categorias. Com
+					"Todas as idades", a taxa é a taxa bruta: todas as mortes divididas por toda a população, o que um
+					cálculo ingênuo faria para um "brasileiro médio". Nesse caso o contador começa na idade média da
+					população, mas o risco continua o mesmo ano após ano.</p>
 			</details>
 			<details>
 				<summary>Por que alguém viveria tanto?</summary>
@@ -724,8 +737,7 @@
 					as diferenças de exposição. "Congelar" o corpo (e o risco) numa certa idade é uma escolha do
 					experimento; outra seria continuar envelhecendo, com o risco mudando a cada aniversário. Também, é
 					improvável que a medicina avance tanto em causas internas e não também em causas externas. Mas isto
-					é
-					um experimento mental, não uma previsão. Ainda assim, é um experimento divertido, até para ver o
+					é um experimento mental, não uma previsão. Ainda assim, é um experimento divertido, até para ver o
 					potencial de tal empreitada.</p>
 			</details>
 			<details>
@@ -862,19 +874,40 @@
 
 		/* Taxa da idade escolhida. Com suavização, agrupa ±2 anos (óbitos somados / população somada).
 		   Se a janela não tiver mortes, ela é ampliada até encontrar. A idade 90 (grupo "90+") não é misturada com as demais. */
-		function buildProfile(sex, uf, start, smooth) {
+		function buildProfile(sex, uf, startArg, smooth) {
+			/* "ALL" em sexo/estado soma todas as categorias; startArg === null soma todas as idades (taxa bruta) */
+			const okS = r => (sex === "ALL" || r.sex === sex) && (uf === "ALL" || r.uf === uf);
 			const d = Array(91).fill(0), pop = Array(91).fill(0);
-			for (const r of totalRows) if (r.sex === sex && r.uf === uf) { d[r.age] += r.deaths; pop[r.age] += r.population; }
-			const r0 = (smooth && start < 90) ? 2 : 0; let r = r0, lo, hi, dd, pp;
-			for (; ; r++) {
-				lo = Math.max(0, start - r); hi = start === 90 ? 90 : Math.min(89, start + r); dd = 0; pp = 0;
-				for (let a = lo; a <= hi; a++) { dd += d[a]; pp += pop[a]; }
-				if (dd > 0 || r >= 90) break;
+			for (const r of totalRows) if (okS(r)) { d[r.age] += r.deaths; pop[r.age] += r.population; }
+			const all = startArg === null;
+			let start, r0 = 0, r = 0, lo, hi, dd, pp;
+			if (all) {
+				lo = 0; hi = 90; dd = d.reduce((s, x) => s + x, 0); pp = pop.reduce((s, x) => s + x, 0);
+				start = Math.round(pop.reduce((s, x, a) => s + x * a, 0) / pp); /* idade média da população */
+			} else {
+				start = startArg; r0 = (smooth && start < 90) ? 2 : 0; r = r0;
+				for (; ; r++) {
+					lo = Math.max(0, start - r); hi = start === 90 ? 90 : Math.min(89, start + r); dd = 0; pp = 0;
+					for (let a = lo; a <= hi; a++) { dd += d[a]; pp += pop[a]; }
+					if (dd > 0 || r >= 90) break;
+				}
 			}
 			const m = pp > 0 ? dd / pp : 0, cm = new Map();
-			for (const c of causeRows) if (c.sex === sex && c.uf === uf && c.age >= lo && c.age <= hi) cm.set(c.cause, (cm.get(c.cause) || 0) + c.deaths);
+			for (const c of causeRows) if (okS(c) && c.age >= lo && c.age <= hi) cm.set(c.cause, (cm.get(c.cause) || 0) + c.deaths);
 			const codes = [...cm.keys()], w = codes.map(c => cm.get(c));
-			return { sex, uf, start, m, p: 1 - Math.exp(-m), lo, hi, r, r0, tab: { codes, w, sum: w.reduce((s, x) => s + x, 0) } };
+			return { sex, uf, start, all, m, p: 1 - Math.exp(-m), lo, hi, r, r0, tab: { codes, w, sum: w.reduce((s, x) => s + x, 0) } };
+		}
+		/* descrição do perfil: curta (imagem) ou completa (nota) */
+		function profileLabel(short) {
+			if (P.sex === "ALL" && P.uf === "ALL" && P.all) return short ? `pessoa média do Brasil, ${P.start} anos` : `pessoa média do Brasil (começa aos ${P.start} anos, a idade média da população)`;
+			const who = P.sex === "F" ? "mulher" : P.sex === "M" ? "homem" : "pessoa";
+			const age = P.all ? (short ? `${P.start} anos (idade média)` : `idade média da população (${P.start} anos)`) : `${P.start} anos`;
+			return `${who}, ${age}, ${P.uf === "ALL" ? "Brasil" : (UF_NAMES[P.uf] || P.uf)}`;
+		}
+		function whoText() {
+			if (P.sex === "ALL" && P.uf === "ALL" && P.all) return "uma pessoa média brasileira";
+			const noun = P.sex === "F" ? "uma mulher" : P.sex === "M" ? "um homem" : "uma pessoa";
+			return `${noun} ${P.all ? `com a idade média da população (${P.start} anos)` : `de ${P.start} anos`} (${P.uf === "ALL" ? "Brasil" : P.uf})`;
 		}
 		function pickCause() {
 			const t = P.tab; if (!t.codes.length) return "";
@@ -925,8 +958,8 @@
 				totalRows = norm(parseCSV(await a.text()), false); causeRows = norm(parseCSV(await b.text()), true);
 				if (c && c.ok) parseCSV(await c.text()).forEach(r => CID.set(r.code.toUpperCase(), r.name));
 				const ufs = [...new Set(totalRows.map(r => r.uf))].sort();
-				$("uf").innerHTML = ufs.map(u => `<option value="${u}">${u} — ${UF_NAMES[u] || u}</option>`).join("");
-				if (ufs.includes("SP")) $("uf").value = "SP";
+				$("uf").innerHTML = '<option value="ALL">Todos os estados (Brasil)</option>' + ufs.map(u => `<option value="${u}">${u} — ${UF_NAMES[u] || u}</option>`).join("");
+				if (ufs.includes("ALL")) $("uf").value = "ALL";
 				$("status").textContent = `Dados carregados: ${fmt(totalRows.length)} perfis e ${fmt(causeRows.length)} linhas por causa.`;
 				$("go").disabled = false;
 			} catch (e) {
@@ -941,7 +974,7 @@
 		}
 
 		function startLife() {
-			const start = Number($("age").value), mine = ++token;
+			const start = P.start, mine = ++token;
 			const r = lifeOnce(start); last = { ...r, start };
 			$("lifePanel").classList.remove("hidden"); $("result").classList.add("hidden"); $("again").disabled = true;
 			$("tree").innerHTML = '<span class="muted">A árvore aparece quando a vida acabar.</span>';
@@ -964,7 +997,7 @@
 		}
 
 		function finishLife() {
-			const { age, code, start } = last, ela = P.sex === "F" ? "Ela" : "Ele";
+			const { age, code, start } = last, ela = P.sex === "F" ? "Ela" : P.sex === "M" ? "Ele" : "A pessoa";
 			$("again").disabled = false;
 			if (age === null) {
 				$("counter").textContent = "∞"; $("verdict").textContent = "Imortal (por falta de dados)";
@@ -1019,12 +1052,12 @@
 			$("rareNote").textContent = (unseen ? `Das ${possible} causas possíveis neste perfil, ${unseen} não apareceram nenhuma vez nestas ${fmt(n)} vidas. ` : `Todas as ${possible} causas possíveis apareceram pelo menos uma vez. `) + `Abaixo, as mais raras entre as que apareceram.` + (ties > 8 ? ` Mais ${ties - 8} causas empatam com ${items[0].k} ${items[0].k === 1 ? "morte" : "mortes"}.` : "");
 			if (rare.some(e => isSelf(e.c))) selfInTop = true;
 			const risk = P.p;
-			$("profileNote").textContent = `Perfil: ${P.sex === "F" ? "mulher" : "homem"}, ${start} anos, ${UF_NAMES[P.uf] || P.uf}. Risco de morrer por causa externa no próximo ano: ${fmt(risk * 100, 3)}%${risk > 0 ? ` (1 em ${fmt(1 / risk)})` : ""}.` + (P.r > P.r0 ? ` Sem mortes numa janela menor, a taxa usa as idades ${P.lo}–${P.hi}.` : P.lo !== P.hi ? ` Taxa suavizada com as idades ${P.lo}–${P.hi}.` : "");
+			$("profileNote").textContent = `Perfil: ${profileLabel(false)}. Risco de morrer por causa externa no próximo ano: ${fmt(risk * 100, 3)}%${risk > 0 ? ` (1 em ${fmt(1 / risk)})` : ""}.` + (P.r > P.r0 ? ` Sem mortes numa janela menor, a taxa usa as idades ${P.lo}–${P.hi}.` : P.lo !== P.hi ? ` Taxa suavizada com as idades ${P.lo}–${P.hi}.` : "");
 		}
 
 		function runAll() {
-			const start = Number($("age").value), sex = $("sex").value, uf = $("uf").value, n = Number($("runs").value);
-			P = buildProfile(sex, uf, start, $("smooth").checked); many = simulateMany(start, n);
+			const sex = $("sex").value, uf = $("uf").value, n = Number($("runs").value);
+			P = buildProfile(sex, uf, $("allAges").checked ? null : Number($("age").value), $("smooth").checked); many = simulateMany(P.start, n);
 			$("manyPanel").classList.add("hidden"); $("sharePanel").classList.add("hidden");
 			startLife();
 		}
@@ -1032,7 +1065,7 @@
 
 		/* ---------- Compartilhar ---------- */
 		function shareText() {
-			const who = `${P.sex === "F" ? "uma mulher" : "um homem"} de ${last.start} anos (${P.uf})`;
+			const who = whoText();
 			return `Sorteei uma vida possível num mundo sem doenças: ${who} viveria até os ${fmt(last.age)} anos e morreria de "${nameOf(last.code)}" ${emojiOf(last.code)}. E você?`;
 		}
 		function setupShare() {
@@ -1052,7 +1085,7 @@
 			x.fillStyle = "#f5f1e9"; x.fillRect(0, 0, W, H); x.strokeStyle = "#e8e0d4"; x.lineWidth = 4; x.strokeRect(30, 30, W - 60, H - 60);
 			x.textAlign = "center"; x.fillStyle = "#29251f"; x.font = "800 34px system-ui,sans-serif"; x.fillText("VIDA", W / 2 - 52, 120); x.fillStyle = "#b85d3f"; x.fillText("LONGA", W / 2 + 62, 120);
 			x.fillStyle = "#81796e"; x.font = "30px system-ui,sans-serif";
-			x.fillText(`Perfil: ${P.sex === "F" ? "mulher" : "homem"}, ${last.start} anos, ${UF_NAMES[P.uf] || P.uf}`, W / 2, 190);
+			x.fillText(`Perfil: ${profileLabel(true)}`, W / 2, 190);
 			x.fillText("Uma vida possível, sorteada ao acaso", W / 2, 265); x.fillText("num mundo sem doenças, duraria até", W / 2, 310);
 			x.fillStyle = "#b85d3f"; x.font = "230px Georgia,serif"; x.fillText(last.age === null ? "∞" : fmt(last.age), W / 2, 500);
 			x.fillStyle = "#81796e"; x.font = "34px system-ui,sans-serif"; x.fillText("anos", W / 2, 590);
@@ -1077,10 +1110,11 @@
 			catch (e) { if (e.name !== "AbortError") download(); }
 		};
 
-		$("age").addEventListener("input", () => $("ageOut").textContent = $("age").value);
+		function syncAge() { const all = $("allAges").checked; $("age").disabled = all; $("ageOut").textContent = all ? "todas" : $("age").value + " anos"; }
+		$("age").addEventListener("input", syncAge); $("allAges").addEventListener("change", syncAge);
 		$("go").onclick = () => { try { runAll(); } catch (e) { $("status").textContent = e.message; $("status").classList.add("error"); } };
 		$("again").onclick = again;
-		$("reset").onclick = () => { resetResults(); $("age").value = 30; $("ageOut").textContent = "30"; $("sex").value = "F"; $("runs").value = "10000"; $("smooth").checked = true; if ([...$("uf").options].some(o => o.value === "SP")) $("uf").value = "SP"; window.scrollTo({ top: 0, behavior: "smooth" }); };
+		$("reset").onclick = () => { resetResults(); $("age").value = 36; $("allAges").checked = false; syncAge(); $("sex").value = "ALL"; $("runs").value = "10000"; $("smooth").checked = true; $("uf").value = "ALL"; window.scrollTo({ top: 0, behavior: "smooth" }); };
 		$("repo").href = REPO_URL;
 		loadData();
 	</script>
