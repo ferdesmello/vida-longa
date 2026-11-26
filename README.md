@@ -1,49 +1,51 @@
 # Vida Longa
 
-**Quão longas seriam nossas vidas em um mundo sem doenças?**
+**How long would our lives be in a world without disease or aging?**
 
-E se o transumanismo vingar (ainda mais do que já vingou) e encontrássemos a cura de todas as doenças e até do envelhecimento? Sem as causas internas de morte, só sobrariam as externas: quedas, afogamentos, violência e azar. A expectativa de vida poderia aumentar de menos de um século hoje para séculos ou até milênios. O Vida Longa cria vidas possíveis a partir de causas externas de morte, "congelando" o perfil escolhido na idade biológica selecionada.
+What if transhumanism won (even more than it already won) and we found cures for every disease and for aging itself? Without internal causes of death, only external ones would remain: falls, drownings, violence, and chance. Life expectancy could increase from less than a century today to centuries or even millennia. Vida Longa generates possible lifespans for a chosen biological age and selected profile based on external causes of death.
 
-Mas faz sentido esse tipo de extrapolação ou experimento? Talvez não muito, pois o fim das doenças e do envelhecimento provavelmente acarretaria uma mudança na condição humana tão grande que extrapolar da condição anterior não fosse realista. Mas ainda assim é algo divertido de fazer e pode dar uma ideia de todo o potencial que haveria nessa empreitada.
+Does this kind of extrapolation or experiment make sense? Perhaps not very much, since the end of disease and aging would probably bring about a change in human conditions so profound that extrapolating from the previous condition would not be realistic. But it is still a fun experiment and can provide a sense of the potential that could be involved in such an endeavor.
 
-Esse projeto foi inspirado em [PolStats — Life](https://polstats.com/#!/life), que faz algo semelhante com dados americanos. Aqui, porém, o experimento usa dados brasileiros: SIM/DATASUS para óbitos por causas externas e estimativas populacionais do IBGE.
+This project was inspired by [PolStats — Life](https://polstats.com/#!/life), which does something similar with American data. Here, however, the experiment uses Brazilian data: SIM/DATASUS for deaths caused by external factors and population estimates from IBGE.
 
-## Ver o experimento
+For the momment, the page is only available in Portuguese.
 
-Sirva o projeto localmente:
+## View the experiment
+
+Serve the project locally:
 
 ```bash
 python -m http.server 8000
 ```
 
-Depois abra `http://localhost:8000`.
+Then open `http://localhost:8000`.
 
-## Como funciona
+## How it works
 
-Escolha idade, sexo e estado, execute entre 1.000 e 100.000 vidas simuladas e veja:
+Choose an age, sex, and state, run between 1,000 and 100,000 simulated lives, and view:
 
-- uma vida sorteada;
-- a causa de morte e sua posição na classificação CID-10;
-- a distribuição das idades ao morrer;
-- as causas externas de morte mais e menos frequentes para o perfil.
+- one randomly generated life;
+- the cause of death and its position in the ICD-10 classification;
+- the distribution of ages at death;
+- the most and least frequent external causes of death for the profile.
 
-O modelo usa uma taxa anual calculada para o perfil escolhido a partir do [SIM](https://dadosabertos.saude.gov.br/dataset/sim), aplica o risco de forma exponencial e escolhe uma causa proporcional ao número de óbitos observados no SIM. Quando o perfil fica congelado na idade biológica escolhida, o risco não envelhece junto.
+The model uses an annual mortality rate calculated for the selected profile from [SIM](https://dadosabertos.saude.gov.br/dataset/sim), applies the risk exponentially, and chooses a cause in proportion to the number of deaths observed in SIM. When the profile is frozen at the selected biological age, the risk does not age with it.
 
-## Capturas de tela
+## Screenshots
 
-### Perfil
+### Profile
 
-![Seleção de perfil](assets/selection.png)
+![Profile selection](assets/selection.png)
 
-### Uma vida possível
+### One possible life
 
-![Resultado para uma vida](assets/results_person.png)
+![Result for one life](assets/results_person.png)
 
-### Muitas vidas
+### Many lives
 
-![Resultado para várias vidas](assets/results_people.png)
+![Result for many lives](assets/results_people.png)
 
-## Estrutura do repositório
+## Repository structure
 
 ```text
 vida-longa/
@@ -68,11 +70,11 @@ vida-longa/
     └── process_mortality.py
 ```
 
-## Dados
+## Data
 
-- [Sistema de Informações sobre Mortalidade — SIM](https://dadosabertos.saude.gov.br/dataset/sim)
-- [Dicionário de Dados do SIM 2025](https://s3.sa-east-1.amazonaws.com/ckan.saude.gov.br/SIM/Dicionario_SIM_2025.pdf)
-- [Base da Mortalidade Geral 2024](https://dadosabertos.saude.gov.br/dataset/sim/resource/f0bdf83f-708e-4de9-9582-959055844ae9)
-- [População estimada — IBGE](https://www.ibge.gov.br/estatisticas/sociais/populacao/9109-populacao-estimada.html)
+- [Mortality Information System — SIM](https://dadosabertos.saude.gov.br/dataset/sim)
+- [SIM 2025 Data Dictionary](https://s3.sa-east-1.amazonaws.com/ckan.saude.gov.br/SIM/Dicionario_SIM_2025.pdf)
+- [2024 General Mortality Database](https://dadosabertos.saude.gov.br/dataset/sim/resource/f0bdf83f-708e-4de9-9582-959055844ae9)
+- [Estimated population — IBGE](https://www.ibge.gov.br/estatisticas/sociais/populacao/9109-populacao-estimada.html)
 
-Os dados originais ficam em `data/`; os CSVs usados pela página são gerados em `data/processed_data/`.
+The original data is stored in `data/`; the CSV files used by the page are generated in `data/processed_data/`.
