@@ -570,7 +570,7 @@
 
 		<section class="hero">
 			<p class="eyebrow">UM EXPERIMENTO MENTAL COM DADOS DE MORTALIDADE BRASILEIRA</p>
-			<h1>E se não morrêssemos mais<br><em>de doenças nem de velhice?</em></h1>
+			<h1>E se não morrêssemos mais<br><em>de doenças nem de ?</em></h1>
 			<p>Imagine um mundo sem mortes por câncer, infarto, dengue ou envelhecimento. Mesmo com as doenças curadas e
 				o envelhecimento derrotado, a morte não desapareceria por completo. Sem as causas internas, restariam as
 				externas: acidentes, violência e outros imprevistos. Quão longa seria a vida de uma pessoa nesse mundo?
@@ -1098,7 +1098,7 @@
 			x.fillStyle = "#81796e"; x.font = "20px system-ui,sans-serif"; x.fillText(`Cada barra: ${HD.unit}` + (HD.tailN ? " · última barra = cauda" : ""), W / 2, 1176);
 			x.fillStyle = "#81796e"; x.font = "24px system-ui,sans-serif";
 			x.fillText(`Em ${fmt(ages.length)} vidas: média de ${fmt(ages.reduce((a, b) => a + b, 0) / ages.length)} anos, mediana de ${fmt(q(ages, .5))}`, W / 2, 1215);
-			x.fillText(`E se não morrêssemos mais de doenças nem de velhice? · ${REPO_URL.replace("https://", "")}`, W / 2, 1265);
+			x.fillText(`${REPO_URL.replace("https://", "")}`, W / 2, 1265);
 			return c;
 		}
 		const blobOf = () => new Promise(r => makeImage().toBlob(r, "image/png"));
