@@ -1,0 +1,318 @@
+code;name
+V01;Pedestre traumatizado em colisão com um veículo a pedal
+V02;Pedestre traumatizado em colisão com um veículo a motor de duas ou três rodas
+V03;Pedestre traumatizado em colisão com um automóvel [carro], "pick up" ou caminhonete
+V04;Pedestre traumatizado em colisão com um veículo de transporte pesado ou com um ônibus
+V05;Pedestre traumatizado em colisão com trem [comboio] ou um veículo ferroviário
+V06;Pedestre traumatizado em colisão com outro veículo não-motorizado
+V09;Pedestre traumatizado em outros acidentes de transporte e em acidentes de transporte não especificados
+V10;Ciclista traumatizado em colisão com um pedestre ou um animal
+V11;Ciclista traumatizado em colisão com outro veículo a pedal
+V12;Ciclista traumatizado em colisão com um veículo a motor de duas ou três rodas
+V13;Ciclista traumatizado em colisão com um automóvel, "pick up" ou caminhonete
+V14;Ciclista traumatizado em colisão com um veículo de transporte pesado ou um ônibus
+V15;Ciclista traumatizado em colisão com um trem ou um veículo ferroviário
+V16;Ciclista traumatizado em colisão com outro veículo não-motorizado
+V17;Ciclista traumatizado em colisão com um objeto fixo ou parado
+V18;Ciclista traumatizado em um acidente de transporte sem colisão
+V19;Ciclista traumatizado em outros acidentes de transporte e em acidentes de transporte não especificados
+V20;Motociclista traumatizado em colisão com um pedestre ou um animal
+V21;Motociclista traumatizado em colisão com um veículo a pedal
+V22;Motociclista traumatizado em colisão com um veículo a motor de duas ou três rodas
+V23;Motociclista traumatizado em colisão com um automóvel [carro], "pick up" ou caminhonete
+V24;Motociclista traumatizado em colisão com um veículo de transporte pesado ou um ônibus
+V25;Motociclista traumatizado em colisão com um trem ou um veículo ferroviário
+V26;Motociclista traumatizado em colisão com outro veículo não-motorizado
+V27;Motociclista traumatizado em colisão com um objeto fixo ou parado
+V28;Motociclista traumatizado em um acidente de transporte sem colisão
+V29;Motociclista traumatizado em outros acidentes de transporte e em acidentes de transporte não especificados
+V30;Ocupante de um triciclo motorizado traumatizado em colisão com um pedestre ou um animal
+V31;Ocupante de um triciclo motorizado traumatizado em colisão com um veículo a pedal
+V32;Ocupante de um triciclo motorizado traumatizado em colisão com outro veículo a motor de duas ou três rodas
+V33;Ocupante de um triciclo motorizado traumatizado em colisão com um automóvel, "pick up" ou caminhonete
+V34;Ocupante de um triciclo motorizado traumatizado em colisão com um veículo de transporte pesado ou um ônibus
+V35;Ocupante de um triciclo motorizado traumatizado em colisão com um trem [comboio] ou um veículo ferroviário
+V36;Ocupante de um triciclo motorizado traumatizado em colisão com outro veículo não-motorizado
+V37;Ocupante de um triciclo motorizado traumatizado em colisão com um objeto fixo ou parado
+V38;Ocupante de um triciclo motorizado traumatizado em um acidente de transporte sem colisão
+V39;Ocupante de um triciclo motorizado traumatizado em outros acidentes de transporte e em acidentes de transporte não especificados
+V40;Ocupante de um automóvel [carro] traumatizado em colisão com um pedestre ou um animal
+V41;Ocupante de um automóvel [carro] traumatizado em colisão com um veículo a pedal
+V42;Ocupante de um automóvel [carro] traumatizado em colisão com outro veículo a motor de duas ou três rodas
+V43;Ocupante de um automóvel [carro] traumatizado em colisão com um automóvel [carro], "pick up" ou caminhonete
+V44;Ocupante de um automóvel [carro] traumatizado em colisão com um veículo de transporte pesado ou um ônibus
+V45;Ocupante de um automóvel [carro] traumatizado em colisão com um trem [comboio] ou um veículo ferroviário
+V46;Ocupante de um automóvel [carro] traumatizado em colisão com outro veículo não-motorizado
+V47;Ocupante de um automóvel [carro] traumatizado em colisão com um objeto fixo ou parado
+V48;Ocupante de um automóvel [carro] traumatizado em um acidente de transporte sem colisão
+V49;Ocupante de um automóvel [carro] traumatizado em outro acidentes de transporte e em acidentes de transporte não especificados
+V50;Ocupante de uma caminhonete traumatizado em colisão com um pedestre ou um animal
+V51;Ocupante de uma caminhonete traumatizado em colisão com um veículo a pedal
+V52;Ocupante de uma caminhonete traumatizado em colisão com veículo a motor de duas ou três rodas
+V53;Ocupante de uma caminhonete traumatizado em colisão com um automóvel [carro] ou uma caminhonete
+V54;Ocupante de uma caminhonete traumatizado em colisão com um veículo de transporte pesado ou um ônibus
+V55;Ocupante de uma caminhonete traumatizado em colisão com um trem [comboio] ou veículo ferroviário
+V56;Ocupante de uma caminhonete traumatizado em colisão com outro veículo não-motorizado
+V57;Ocupante de uma caminhonete traumatizado em colisão com um objeto fixo ou parado
+V58;Ocupante de uma caminhonete traumatizado em um acidente de transporte sem colisão
+V59;Ocupante de uma caminhonete traumatizado em outros acidentes de transporte e em acidentes de transporte não especificados
+V60;Ocupante de um veículo de transporte pesado traumatizado em colisão com um pedestre ou um animal
+V61;Ocupante de um veículo de transporte pesado traumatizado em colisão com um veículo a pedal
+V62;Ocupante de um veículo de transporte pesado traumatizado em colisão com um veículo a motor de duas ou três rodas
+V63;Ocupante de um veículo de transporte pesado traumatizado em colisão com um automóvel [carro] ou uma caminhonete
+V64;Ocupante de um veículo de transporte pesado traumatizado em colisão com um outro veículo de transporte pesado ou um ônibus
+V65;Ocupante de um veículo de transporte pesado traumatizado em colisão com um trem [comboio] ou um veículo ferroviário
+V66;Ocupante de um veículo de transporte pesado traumatizado em colisão com um outro veículo não-motorizado
+V67;Ocupante de um veículo de transporte pesado traumatizado em colisão com um objeto fixo ou parado
+V68;Ocupante de um veículo de transporte pesado traumatizado em um acidente de transporte sem colisão
+V69;Ocupante de um veículo de transporte pesado traumatizado em outros acidentes de transporte não especificados
+V70;Ocupante de um ônibus traumatizado em colisão com um pedestre ou um animal
+V71;Ocupante de um ônibus traumatizado em colisão com um veículo a pedal
+V72;Ocupante de um ônibus traumatizado em colisão com um outro veículo a motor de duas ou três rodas
+V73;Ocupante de um ônibus traumatizado em colisão com um automóvel [carro] ou uma caminhonete
+V74;Ocupante de um ônibus traumatizado em colisão com um veículo de transporte pesado ou um ônibus
+V75;Ocupante de um ônibus traumatizado em colisão com um trem [comboio] ou um veículo ferroviário
+V76;Ocupante de um ônibus traumatizado em colisão com outro veículo não-motorizado
+V77;Ocupante de um ônibus traumatizado em colisão com um objeto fixo ou parado
+V78;Ocupante de um ônibus traumatizado em um acidente de transporte sem colisão
+V79;Ocupante de um ônibus traumatizado em outros acidentes de transporte e em acidentes de transporte não especificados
+V80;Pessoa montada em animal ou ocupante de um veículo a tração animal traumatizado em um acidente de transporte
+V81;Ocupante de um trem [comboio] ou um veículo ferroviário traumatizado em um acidente de transporte
+V82;Ocupante de um bonde [carro elétrico] traumatizado em um acidente de transporte
+V83;Ocupante de um veículo especial a motor usado principalmente em áreas industriais traumatizado em um acidente de transporte
+V84;Ocupante de um veículo especial a motor de uso essencialmente agrícola traumatizado em um acidente de transporte
+V85;Ocupante de um veículo a motor especial de construções traumatizado em um acidente de transporte
+V86;Ocupante de um veículo especial para qualquer terreno ou de outro veículo a motor projetado essencialmente para uso não em via pública, traumatizado em um acidente não-de-trânsito
+V87;Acidente de trânsito de tipo especificado, mas sendo desconhecido o modo de transporte da vítima
+V88;Acidente não-de-trânsito de tipo especificado, mas sendo desconhecido o modo de transporte da vítima
+V89;Acidente com um veículo a motor ou não-motorizado, tipo(s) de veículo(s) não especificado(s)
+V90;Acidente com embarcação causando afogamento e submersão
+V91;Acidente com embarcação causando outro tipo de traumatismo
+V92;Afogamento e submersão relacionados com transporte por água sem acidente com a embarcação
+V93;Acidente a bordo de uma embarcação, sem acidente da embarcação e não causando afogamento ou submersão
+V94;Outros acidentes de transporte por água e os não especificados
+V95;Acidente de aeronave a motor causando traumatismo ao ocupante
+V96;Acidente de uma aeronave sem motor causando traumatismo a ocupante
+V97;Outros acidentes especificados de transporte aéreo
+V98;Outros acidentes de transporte especificados
+V99;Acidente de transporte não especificado
+W00;Queda no mesmo nível envolvendo gelo e neve
+W01;Queda no mesmo nível por escorregão, tropeção ou passos em falsos [traspés]
+W02;Queda envolvendo patins de rodas ou para gelo, esqui ou pranchas de rodas
+W03;Outras quedas no mesmo nível por colisão com ou empurrão por outra pessoa
+W04;Queda, enquanto estava sendo carregado ou apoiado por outra(s) pessoa(s)
+W05;Queda envolvendo uma cadeira de rodas
+W06;Queda de um leito
+W07;Queda de uma cadeira
+W08;Queda de outro tipo de mobília
+W09;Queda envolvendo equipamento de "playground"
+W10;Queda em ou de escadas ou degraus
+W11;Queda em ou de escadas de mão
+W12;Queda em ou de um andaime
+W13;Queda de ou para fora de edifícios ou outras estruturas
+W14;Queda de árvore
+W15;Queda de penhasco
+W16;Mergulho ou pulo na água causando outro traumatismo que não afogamento ou submersão
+W17;Outras quedas de um nível a outro
+W18;Outras quedas no mesmo nível
+W19;Queda sem especificação
+W20;Impacto causado por objeto lançado, projetado ou em queda
+W21;Impacto acidental ativo ou passivo causado por equipamento esportivo
+W22;Impacto acidental ativo ou passivo causado por outros objetos
+W23;Apertado, colhido, comprimido ou esmagado dentro de ou entre objetos
+W24;Contato com elevadores e instrumentos de transmissão, não classificados em outra parte
+W25;Contato com vidro cortante
+W26;Contato com faca, espada e punhal
+W27;Contato com ferramentas manuais sem motor
+W28;Contato com segadeira motorizada para cortar ou aparar a grama
+W29;Contato com outros utensílios manuais e aparelhos domésticos equipados com motor
+W30;Contato com maquinaria agrícola
+W31;Contato com outras máquinas e com as não especificadas
+W32;Projétil de revólver
+W33;Rifle, espingarda e armas de fogo de maior tamanho
+W34;Projéteis de outras armas de fogo e das não especificadas
+W35;Explosão ou ruptura de caldeira
+W36;Explosão ou ruptura de cilindro de gás
+W37;Explosão ou ruptura de pneumático, tubulação ou mangueira, pressurizados
+W38;Explosão ou ruptura de outros aparelhos pressurizados especificados
+W39;Queima de fogos de artifício
+W40;Explosão de outros materiais
+W41;Exposição a um jato de alta pressão
+W42;Exposição ao ruído
+W43;Exposição à vibração
+W44;Penetração de corpo estranho no ou através de olho ou orifício natural
+W45;Penetração de corpo ou objeto estranho através da pele
+W46;Contato com agulha hipodérmica
+W49;Exposição a outras forças mecânicas inanimadas e às não especificadas
+W50;Golpe, pancada, pontapé, mordedura ou escoriação infligidos por outra pessoa
+W51;Colisão entre duas pessoas
+W52;Esmagado, empurrado ou pisoteado por multidão ou debandada em massa de pessoas
+W53;Mordedura de rato
+W54;Mordedura ou golpe provocado por cão
+W55;Mordedura ou golpe provocado por outros animais mamíferos
+W56;Contato com animais marinhos
+W57;Mordeduras e picadas de inseto e de outros artrópodes, não-venenosos
+W58;Mordedura ou golpe provocado por crocodilo ou aligátor
+W59;Mordedura ou esmagamento provocado por outros répteis
+W60;Contato com espinhos de plantas ou com folhas aguçadas
+W64;Exposição a outras forças mecânicas animadas e às não especificadas
+W65;Afogamento e submersão durante banho em banheira
+W66;Afogamento e submersão consecutiva a queda dentro de uma banheira
+W67;Afogamento e submersão em piscina
+W68;Afogamento e submersão conseqüente a queda dentro de uma piscina
+W69;Afogamento e submersão em águas naturais
+W70;Afogamento e submersão conseqüentes a queda dentro de águas naturais
+W73;Outros afogamentos e submersão especificados
+W74;Afogamento e submersão não especificados
+W75;Sufocação e estrangulamento acidental na cama
+W76;Outro enforcamento e estrangulamento acidental
+W77;Risco a respiração devido a desmoronamento, queda de terra e de outras substâncias
+W78;Inalação do conteúdo gástrico
+W79;Inalação e ingestão de alimentos causando obstrução do trato respiratório
+W80;Inalação e ingestão de outros objetos causando obstrução do trato respiratório
+W81;Confinado ou aprisionado em um ambiente pobre em oxigênio
+W83;Outros riscos especificados à respiração
+W84;Riscos não especificados à respiração
+W85;Exposição a linhas de transmissão de corrente elétrica
+W86;Exposição a outra corrente elétrica especificada
+W87;Exposição a corrente elétrica não especificada
+W88;Exposição a radiação ionizante
+W89;Exposição a fontes luminosas artificiais visíveis ou à luz ultravioleta
+W90;Exposição a outros tipos de radiação não-ionizante
+W91;Exposição a tipo não especificado de radiação
+W92;Exposição a um calor excessivo de origem artificial
+W93;Exposição a um frio excessivo de origem artificial
+W94;Exposição a alta, baixa e a variações da pressão atmosférica
+W99;Exposição a outros fatores ambientais artificiais e aos não especificados
+X00;Exposição a fogo não-controlado em um edifício ou outro tipo de construção
+X01;Exposição a fogo não-controlado fora de um edifício ou de outro tipo de construção
+X02;Exposição a fogo controlado em um edifício ou outro tipo de construção
+X03;Exposição a fogo controlado fora de um edifício ou de outro tipo de construção
+X04;Exposição a combustão de substância muito inflamável
+X05;Exposição a combustão de roupa de dormir
+X06;Exposição a combustão de outro tipo de roupa ou de acessórios
+X08;Exposição a outro tipo especificado de fumaça, fogo ou chamas
+X09;Exposição a tipo não especificado de fumaça, fogo ou chamas
+X10;Contato com bebidas, alimentos, gordura e óleo de cozinha quentes
+X11;Contato com água corrente quente de torneira
+X12;Contato com outros líquidos quentes
+X13;Contato com vapor d´água e com vapores quentes
+X14;Contato com ar e gases quentes
+X15;Contato com aparelhos domésticos quentes
+X16;Contato com aquecedores, radiadores e tubulação
+X17;Contato com motores, máquinas e ferramentas quentes
+X18;Contato com outros metais quentes
+X19;Contato com outras fontes de calor ou com substâncias quentes não especificados
+X20;Contato com serpentes e lagartos venenosos
+X21;Contato com aranhas venenosas
+X22;Contato com escorpiões
+X23;Contato com abelhas, vespas e vespões
+X24;Contato com centopéias e miriápodes venenosas (tropicais)
+X25;Contato com outros artrópodes venenosos
+X26;Contato com animais e plantas marinhos venenosos
+X27;Contato com outros animais venenosos especificados
+X28;Contato com outras plantas venenosas especificadas
+X29;Contato com animais ou plantas venenosos, sem especificação
+X30;Exposição a calor natural excessivo
+X31;Exposição a frio natural excessivo
+X32;Exposição à luz solar
+X33;Vítima de raio
+X34;Vítima de terremoto
+X35;Vítima de erupção vulcânica
+X36;Vítima de avalanche, desabamento de terra e outros movimentos da superfície terrestre
+X37;Vítima de tempestade cataclísmica
+X38;Vítima de inundação
+X39;Exposição a outras forças da natureza e às não especificadas
+X40;Envenenamento [intoxicação] acidental por e exposição a analgésicos, antipiréticos e anti-reumáticos, não-opiáceos
+X41;Envenenamento [intoxicação] acidental por e exposição a anticonvulsivantes [antiepilépticos], sedativos, hipnóticos, antiparkinsonianos e psicotrópicos não classificados em outra parte
+X42;Envenenamento [intoxicação] acidental por e exposição a narcóticos e psicodislépticos [alucinógenos] não classificados em outra parte
+X43;Envenenamento [intoxicação] acidental por e exposição a outras substâncias farmacológicas de ação sobre o sistema nervoso autônomo
+X44;Envenenamento [intoxicação] acidental por e exposição a outras drogas, medicamentos e substâncias biológicas não especificadas
+X45;Envenenamento [intoxicação] acidental por e exposição ao álcool
+X46;Envenenamento [intoxicação] acidental por e exposição a solventes orgânicos e hidrocarbonetos halogenados e seus vapores
+X47;Intoxicação acidental por e exposição a outros gases e vapores
+X48;Envenenamento [intoxicação] acidental por e exposição a pesticidas
+X49;Envenenamento [intoxicação] acidental por e exposição a outras substâncias químicas nocivas e às não especificadas
+X50;Excesso de exercícios e movimentos vigorosos ou repetitivos
+X51;Viagem e movimento
+X52;Estadia prolongada em ambiente agravitacional
+X53;Falta de alimento
+X54;Falta de água
+X57;Privação não especificada
+X58;Exposição a outros fatores especificados
+X59;Exposição a fatores não especificados
+X60;Auto-intoxicação por e exposição, intencional, a analgésicos, antipiréticos e anti-reumáticos, não-opiáceos
+X61;Auto-intoxicação por e exposição, intencional, a drogas anticonvulsivantes [antiepilépticos] sedativos, hipnóticos, antiparkinsonianos e psicotrópicos
+X62;Auto-intoxicação por e exposição, intencional, a narcóticos e psicodislépticos [alucinógenos] não classificados em outra parte
+X63;Auto-intoxicação por e exposição, intencional, a outras substâncias farmacológicas de ação sobre o sistema nervoso autônomo
+X64;Auto-intoxicação por e exposição, intencional, a outras drogas, medicamentos e substâncias biológicas e às não especificadas
+X65;Auto-intoxicação voluntária por álcool
+X66;Auto-intoxicação intencional por solventes orgânicos, hidrocarbonetos halogenados e seus vapores
+X67;Auto-intoxicação intencional por outros gases e vapores
+X68;Auto-intoxicação por e exposição, intencional, a pesticidas
+X69;Auto-intoxicação por e exposição, intencional, a outros produtos químicos e substâncias nocivas não especificadas
+X70;Lesão autoprovocada intencionalmente por enforcamento, estrangulamento e sufocação
+X71;Lesão autoprovocada intencionalmente por afogamento e submersão
+X72;Lesão autoprovocada intencionalmente por disparo de arma de fogo de mão
+X73;Lesão autoprovocada intencionalmente por disparo de espingarda, carabina, ou arma de fogo de maior calibre
+X74;Lesão autoprovocada intencionalmente por disparo de outra arma de fogo e de arma de fogo não especificada
+X75;Lesão autoprovocada intencionalmente por dispositivos explosivos
+X76;Lesão autoprovocada intencionalmente pela fumaça, pelo fogo e por chamas
+X77;Lesão autoprovocada intencionalmente por vapor de água, gases ou objetos quentes
+X78;Lesão autoprovocada intencionalmente por objeto cortante ou penetrante
+X79;Lesão autoprovocada intencionalmente por objeto contundente
+X80;Lesão autoprovocada intencionalmente por precipitação de um lugar elevado
+X81;Lesão autoprovocada intencionalmente por precipitação ou permanência diante de um objeto em movimento
+X82;Lesão autoprovocada intencionalmente por impacto de um veículo a motor
+X83;Lesão autoprovocada intencionalmente por outros meios especificados
+X84;Lesão autoprovocada intencionalmente por meios não especificados
+X85;Agressão por meio de drogas, medicamentos e substâncias biológicas
+X86;Agressão por meio de substâncias corrosivas
+X87;Agressão por pesticidas
+X88;Agressão por meio de gases e vapores
+X89;Agressão por meio de outros produtos químicos e substâncias nocivas especificados
+X90;Agressão por meio de produtos químicos e substâncias nocivas não especificados
+X91;Agressão por meio de enforcamento, estrangulamento e sufocação
+X92;Agressão por meio de afogamento e submersão
+X93;Agressão por meio de disparo de arma de fogo de mão
+X94;Agressão por meio de disparo de espingarda, carabina ou arma de fogo de maior calibre
+X95;Agressão por meio de disparo de outra arma de fogo ou de arma não especificada
+X96;Agressão por meio de material explosivo
+X97;Agressão por meio de fumaça, fogo e chamas
+X98;Agressão por meio de vapor de água, gases ou objetos quentes
+X99;Agressão por meio de objeto cortante ou penetrante
+Y00;Agressão por meio de um objeto contundente
+Y01;Agressão por meio de projeção de um lugar elevado
+Y02;Agressão por meio de projeção ou colocação da vítima diante de um objeto em movimento
+Y03;Agressão por meio de impacto de um veículo a motor
+Y04;Agressão por meio de força corporal
+Y05;Agressão sexual por meio de força física
+Y06;Negligência e abandono
+Y07;Outras síndromes de maus tratos
+Y08;Agressão por outros meios especificados
+Y09;Agressão por meios não especificados
+Y10;Envenenamento [intoxicação] por e exposição a analgésicos, antipiréticos e anti-reumáticos não-opiáceos, intenção não determinada
+Y11;Envenenamento [intoxicação] por e exposição a anticonvulsivantes [antiepilépticos], sedativos, hipnóticos, antiparkinsonianos e psicotrópicos não classificados em outra parte, intenção não determinada
+Y12;Envenenamento [intoxicação] por e exposição a narcóticos e a psicodislépticos [alucinógenos] não classificados em outra parte, intenção não determinada
+Y13;Envenenamento [intoxicação] por e exposição a outras substâncias farmacológicas de ação sobre o sistema nervoso autônomo, intenção não determinada
+Y14;Envenenamento [intoxicação] por e exposição a outras drogas, medicamentos e substâncias biológicas e as não especificadas, intenção não determinada
+Y15;Envenenamento [intoxicação] por e exposição ao álcool, intenção não determinada
+Y16;Envenenamento [intoxicação] por e exposição a solventes orgânicos e hidrocarbonetos halogenados e seus vapores, intenção não determinada
+Y17;Envenenamento [intoxicação] por e exposição a outros gases e vapores, intenção não determinada
+Y18;Envenenamento [intoxicação] por e exposição a pesticidas, intenção não determinada
+Y19;Envenenamento [intoxicação] por e exposição a outros produtos químicos e substâncias nocivas e aos não especificados, intenção não determinada
+Y20;Enforcamento, estrangulamento e sufocação, intenção não determinada
+Y21;Afogamento e submersão, intenção não determinada
+Y22;Disparo de pistola, intenção não determinada
+Y23;Disparo de fuzil, carabina e arma de fogo de maior calibre, intenção não determinada
+Y24;Disparo de outra arma de fogo e de arma de fogo não especificada, intenção não determinada
+Y25;Contato com material explosivo, intenção não determinada
+Y26;Exposição a fumaça, fogo e chamas, intenção não determinada
+Y27;Exposição a vapor de água, gases ou objetos quentes, intenção não determinada
+Y28;Contato com objeto cortante ou penetrante, intenção não determinada
+Y29;Contato com objeto contundente, intenção não determinada
+Y30;Queda, salto ou empurrado de um lugar elevado, intenção não determinada
+Y31;Queda, permanência ou corrida diante de um objeto em movimento, intenção não determinada
+Y32;Impacto de um veículo a motor, intenção não determinada
+Y33;Outros fatos ou eventos especificados, intenção não determinada
+Y34;Fatos ou eventos não especificados e intenção não determinada

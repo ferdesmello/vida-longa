@@ -1,521 +1,1089 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- favicon -->
-<link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
-<!-- Open Graph / Facebook / WhatsApp / LinkedIn -->
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://ferdesmello.github.io/vida-longa/" />
-<meta property="og:title" content="Vida Longa — E se não morrêssemos mais de doença alguma?" />
-<meta property="og:description" content="Quão longas seriam nossas vidas em um mundo sem doenças?" />
-<meta property="og:image" content="https://ferdesmello.github.io/vida-longa/assets/results_person.png" />
-<!-- Twitter / X -->
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:url" content="https://ferdesmello.github.io/vida-longa/" />
-<meta name="twitter:title" content="Vida Longa — E se não morrêssemos mais de doença alguma?" />
-<meta name="twitter:description" content="Quão longas seriam nossas vidas em um mundo sem doenças?" />
-<meta name="twitter:image" content="https://ferdesmello.github.io/vida-longa/assets/results_person.png" />
+	<!-- favicon -->
+	<link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
+	<!-- Open Graph / Facebook / WhatsApp / LinkedIn -->
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://ferdesmello.github.io/vida-longa/" />
+	<meta property="og:title" content="Vida Longa — E se não morrêssemos mais de doença alguma?" />
+	<meta property="og:description" content="Quão longas seriam nossas vidas em um mundo sem doenças?" />
+	<meta property="og:image" content="https://ferdesmello.github.io/vida-longa/assets/results_person.png" />
+	<!-- Twitter / X -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:url" content="https://ferdesmello.github.io/vida-longa/" />
+	<meta name="twitter:title" content="Vida Longa — E se não morrêssemos mais de doença alguma?" />
+	<meta name="twitter:description" content="Quão longas seriam nossas vidas em um mundo sem doenças?" />
+	<meta name="twitter:image" content="https://ferdesmello.github.io/vida-longa/assets/results_person.png" />
 
-<title>Vida Longa — e se não morrêssemos mais de doença alguma?</title>
-<style>
-:root{--paper:#f5f1e9;--panel:#fffdf8;--ink:#29251f;--muted:#81796e;--rust:#b85d3f;--sage:#75806a;--line:#e8e0d4;--soft:#eee7db}
-*{box-sizing:border-box}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5}
-header{padding:22px 6%;border-bottom:1px solid var(--line);font-weight:800;letter-spacing:1px}
-header span{color:var(--rust)}
-main{max-width:1050px;margin:auto;padding:0 22px}
-.hero{padding:55px 0 30px;max-width:820px}
-.eyebrow{color:var(--rust);font-size:10px;font-weight:800;letter-spacing:2px;margin:0 0 12px}
-h1{font:500 clamp(40px,7vw,70px)/1 Georgia,serif;letter-spacing:-2px;margin:0; text-wrap:balance;}
-h1 em{color:var(--rust);font-weight:400}
-.hero p:last-child{max-width:600px;color:var(--muted);line-height:1.8;margin-top:22px}
-.panel{background:var(--panel);border:1px solid var(--line);padding:26px;margin-bottom:18px;border-radius:4px}
-h2{font:500 25px Georgia,serif;margin:0 0 18px}
-h3{font:500 16px Georgia,serif;margin:0 0 10px}
-label{display:block;font-size:12px;font-weight:700;margin:0 0 7px}
-input,select{width:100%;padding:11px;border:1px solid var(--line);background:#fffefa;color:var(--ink);border-radius:3px}
-label.chk{display:flex;gap:8px;align-items:center;font-weight:400;margin:14px 0 0}input[type=checkbox]{width:auto;accent-color:var(--rust)}
-input[type=range]{padding:0;accent-color:var(--rust)}
-button,.btn{padding:13px 18px;background:var(--rust);color:#fff;border:0;border-radius:3px;font:700 14px system-ui;cursor:pointer;text-decoration:none;display:inline-block}
-button:hover,.btn:hover{background:#91432f}
-button:disabled{opacity:.4;cursor:not-allowed}
-button.ghost{background:transparent;color:var(--rust);border:1px solid var(--rust)}
-button.ghost:hover{background:#f5eee4}
-.form{display:grid;grid-template-columns:1.4fr .8fr 1.2fr .9fr auto;gap:14px;align-items:end}
-.muted{color:var(--muted);font-size:12px}
-.hidden{display:none!important}
-.fade{animation:fade .6s ease both}
-@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-.life{display:grid;grid-template-columns:1fr 1fr;gap:30px}
-.counter{font:84px/1 Georgia,serif;color:var(--rust)}
-.counter small{font:13px system-ui;color:var(--muted)}
-.progress{height:5px;background:var(--soft);margin:18px 0 10px}
-.progress div{height:100%;background:var(--rust);width:0}
-#milestone{min-height:22px;font-size:13px}
-.cause{background:#f5eee4;padding:16px;margin-top:16px;display:flex;gap:16px;align-items:center}
-.emoji{font-size:54px;line-height:1;animation:pop .5s cubic-bezier(.3,1.6,.5,1) both}
-@keyframes pop{from{transform:scale(0) rotate(-30deg)}to{transform:none}}
-.cause strong{font:500 20px Georgia,serif;display:block}
-.moral{font-style:italic;margin:14px 0 0}
-.crisis{border-left:3px solid #c49a59;background:#f5eee4;padding:10px 14px;font-size:12px;margin-top:12px}
-.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
-.tree{font-size:13px}
-.node{position:relative;padding:6px 0 6px 20px;margin-left:calc(var(--d)*22px);animation:fade .5s ease both;animation-delay:calc(var(--d)*.25s)}
-.node::before{content:"";position:absolute;left:0;top:0;width:12px;height:18px;border-left:1px solid var(--muted);border-bottom:1px solid var(--muted)}
-.node.root{padding-left:0}.node.root::before{display:none}
-.node small{display:block;color:var(--muted);font-size:10px;letter-spacing:.5px}
-.node.leaf{background:#f5eee4;padding-right:8px;font-weight:700}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-.stat{background:#f7f3ec;padding:15px}
-.stat span{display:block;font-size:11px;color:var(--muted)}
-.stat strong{display:block;font:25px Georgia,serif;margin-top:7px}
-.charts{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:25px}
-.histogram{height:230px;display:flex;align-items:flex-end;gap:2px;border-bottom:1px solid var(--line)}
-.bar{flex:1;background:#d9a894;min-width:2px}
-.bar.tail{background:var(--sage)}
-.sw{display:inline-block;width:10px;height:10px;margin:0 4px 0 8px;vertical-align:-1px}
-.sw:first-child{margin-left:0}
-.bar.me{background:var(--rust)}
-.hist-labels{display:flex;justify-content:space-between}
-.cause-row{margin:9px 0;font-size:12px}
-.cause-row .t{display:flex;justify-content:space-between;gap:8px}
-.lists{display:grid;grid-template-columns:1fr 1fr;margin-top:32px}
-.lists>div{padding:0 26px}.lists>div:first-child{padding-left:0}.lists>div:last-child{padding-right:0;border-left:1px solid var(--line)}
-.cause-row.me{font-weight:700}
-.track{height:5px;background:var(--soft);margin-top:4px}
-.track i{display:block;height:100%;background:var(--sage)}
-details{border-top:1px solid var(--line);padding:12px 0}
-summary{cursor:pointer;font:500 17px Georgia,serif}
-details p,details li{font-size:13px;color:#4d463d;line-height:1.7}
-code{background:var(--soft);padding:1px 5px;border-radius:3px;font-size:12px}
-#status{margin:12px 0 0;font-size:12px;color:var(--muted)}
-#status.error{color:#a33}
-footer{padding:30px 0 40px;color:var(--muted);font-size:11px;line-height:1.8}
-footer a,details a{color:var(--rust)}
-@media(max-width:800px){.lists{grid-template-columns:1fr}.lists>div{padding:0}.lists>div:last-child{border-left:0;border-top:1px solid var(--line);padding-top:20px;margin-top:20px}.form,.life,.charts{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}.counter{font-size:64px}}
-@media(prefers-reduced-motion:reduce){*{animation:none!important}}
-</style>
+	<title>Vida Longa — e se não morrêssemos mais de doença alguma?</title>
+	<style>
+		:root {
+			--paper: #f5f1e9;
+			--panel: #fffdf8;
+			--ink: #29251f;
+			--muted: #81796e;
+			--rust: #b85d3f;
+			--sage: #75806a;
+			--line: #e8e0d4;
+			--soft: #eee7db
+		}
+
+		* {
+			box-sizing: border-box
+		}
+
+		body {
+			margin: 0;
+			background: var(--paper);
+			color: var(--ink);
+			font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+			line-height: 1.5
+		}
+
+		header {
+			padding: 22px 6%;
+			border-bottom: 1px solid var(--line);
+			font-weight: 800;
+			letter-spacing: 1px
+		}
+
+		header span {
+			color: var(--rust)
+		}
+
+		main {
+			max-width: 1050px;
+			margin: auto;
+			padding: 0 22px
+		}
+
+		.hero {
+			padding: 55px 0 30px;
+			max-width: 900px
+		}
+
+		.eyebrow {
+			color: var(--rust);
+			font-size: 10px;
+			font-weight: 800;
+			letter-spacing: 2px;
+			margin: 0 0 12px
+		}
+
+		h1 {
+			font: 500 clamp(40px, 7vw, 70px)/1 Georgia, serif;
+			letter-spacing: -2px;
+			margin: 0;
+			text-wrap: balance;
+		}
+
+		h1 em {
+			color: var(--rust);
+			font-weight: 400
+		}
+
+		.hero p:last-child {
+			max-width: 800px;
+			color: var(--muted);
+			line-height: 1.8;
+			margin-top: 22px
+		}
+
+		.instructions {
+			font-size: 13px;
+			color: var(--muted);
+			margin: -8px 0 20px;
+		}
+
+		.panel {
+			background: var(--panel);
+			border: 1px solid var(--line);
+			padding: 26px;
+			margin-bottom: 18px;
+			border-radius: 4px
+		}
+
+		h2 {
+			font: 500 25px Georgia, serif;
+			margin: 0 0 18px
+		}
+
+		h3 {
+			font: 500 16px Georgia, serif;
+			margin: 0 0 10px
+		}
+
+		label {
+			display: block;
+			font-size: 12px;
+			font-weight: 700;
+			margin: 0 0 7px
+		}
+
+		input,
+		select {
+			width: 100%;
+			padding: 11px;
+			border: 1px solid var(--line);
+			background: #fffefa;
+			color: var(--ink);
+			border-radius: 3px
+		}
+
+		label.chk {
+			display: flex;
+			gap: 8px;
+			align-items: center;
+			font-weight: 400;
+			margin: 14px 0 0
+		}
+
+		input[type=checkbox] {
+			width: auto;
+			accent-color: var(--rust)
+		}
+
+		input[type=range] {
+			padding: 0;
+			accent-color: var(--rust)
+		}
+
+		button,
+		.btn {
+			padding: 13px 18px;
+			background: var(--rust);
+			color: #fff;
+			border: 0;
+			border-radius: 3px;
+			font: 700 14px system-ui;
+			cursor: pointer;
+			text-decoration: none;
+			display: inline-block
+		}
+
+		button:hover,
+		.btn:hover {
+			background: #91432f
+		}
+
+		button:disabled {
+			opacity: .4;
+			cursor: not-allowed
+		}
+
+		button.ghost {
+			background: transparent;
+			color: var(--rust);
+			border: 1px solid var(--rust)
+		}
+
+		button.ghost:hover {
+			background: #f5eee4
+		}
+
+		.form {
+			display: grid;
+			grid-template-columns: 1.4fr .8fr 1.2fr .9fr auto;
+			gap: 14px;
+			align-items: end
+		}
+
+		.muted {
+			color: var(--muted);
+			font-size: 12px
+		}
+
+		.hidden {
+			display: none !important
+		}
+
+		.fade {
+			animation: fade .6s ease both
+		}
+
+		@keyframes fade {
+			from {
+				opacity: 0;
+				transform: translateY(8px)
+			}
+
+			to {
+				opacity: 1;
+				transform: none
+			}
+		}
+
+		.life {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 30px
+		}
+
+		.counter {
+			font: 84px/1 Georgia, serif;
+			color: var(--rust)
+		}
+
+		.counter small {
+			font: 13px system-ui;
+			color: var(--muted)
+		}
+
+		.progress {
+			height: 5px;
+			background: var(--soft);
+			margin: 18px 0 10px
+		}
+
+		.progress div {
+			height: 100%;
+			background: var(--rust);
+			width: 0
+		}
+
+		#milestone {
+			min-height: 22px;
+			font-size: 13px
+		}
+
+		.cause {
+			background: #f5eee4;
+			padding: 16px;
+			margin-top: 16px;
+			display: flex;
+			gap: 16px;
+			align-items: center
+		}
+
+		.emoji {
+			font-size: 54px;
+			line-height: 1;
+			animation: pop .5s cubic-bezier(.3, 1.6, .5, 1) both
+		}
+
+		@keyframes pop {
+			from {
+				transform: scale(0) rotate(-30deg)
+			}
+
+			to {
+				transform: none
+			}
+		}
+
+		.cause strong {
+			font: 500 20px Georgia, serif;
+			display: block
+		}
+
+		.moral {
+			font-style: italic;
+			margin: 14px 0 0
+		}
+
+		.crisis {
+			border-left: 3px solid #c49a59;
+			background: #f5eee4;
+			padding: 10px 14px;
+			font-size: 12px;
+			margin-top: 12px
+		}
+
+		.actions {
+			display: flex;
+			gap: 10px;
+			flex-wrap: wrap;
+			margin-top: 18px
+		}
+
+		.tree {
+			font-size: 13px
+		}
+
+		.node {
+			position: relative;
+			padding: 6px 0 6px 20px;
+			margin-left: calc(var(--d)*22px);
+			animation: fade .5s ease both;
+			animation-delay: calc(var(--d)*.25s)
+		}
+
+		.node::before {
+			content: "";
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 12px;
+			height: 18px;
+			border-left: 1px solid var(--muted);
+			border-bottom: 1px solid var(--muted)
+		}
+
+		.node.root {
+			padding-left: 0
+		}
+
+		.node.root::before {
+			display: none
+		}
+
+		.node small {
+			display: block;
+			color: var(--muted);
+			font-size: 10px;
+			letter-spacing: .5px
+		}
+
+		.node.leaf {
+			background: #f5eee4;
+			padding-right: 8px;
+			font-weight: 700
+		}
+
+		.stats {
+			display: grid;
+			grid-template-columns: repeat(4, 1fr);
+			gap: 10px
+		}
+
+		.stat {
+			background: #f7f3ec;
+			padding: 15px
+		}
+
+		.stat span {
+			display: block;
+			font-size: 11px;
+			color: var(--muted)
+		}
+
+		.stat strong {
+			display: block;
+			font: 25px Georgia, serif;
+			margin-top: 7px
+		}
+
+		.stat-value {
+			display: flex;
+			align-items: baseline;
+			gap: 5px;
+		}
+
+		.stat-value strong {
+			display: inline;
+		}
+
+		.stat-value small {
+			font: 12px system-ui, sans-serif;
+			color: var(--muted);
+		}
+
+		.charts {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 26px;
+			margin-top: 25px
+		}
+
+		.histogram {
+			height: 230px;
+			display: flex;
+			align-items: flex-end;
+			gap: 2px;
+			border-bottom: 1px solid var(--line)
+		}
+
+		.bar {
+			flex: 1;
+			background: #d9a894;
+			min-width: 2px
+		}
+
+		.bar.tail {
+			background: var(--sage)
+		}
+
+		.sw {
+			display: inline-block;
+			width: 10px;
+			height: 10px;
+			margin: 0 4px 0 8px;
+			vertical-align: -1px
+		}
+
+		.sw:first-child {
+			margin-left: 0
+		}
+
+		.bar.me {
+			background: var(--rust)
+		}
+
+		.hist-labels {
+			display: flex;
+			justify-content: space-between
+		}
+
+		.cause-row {
+			margin: 9px 0;
+			font-size: 12px
+		}
+
+		.cause-row .t {
+			display: flex;
+			justify-content: space-between;
+			gap: 8px
+		}
+
+		.lists {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			margin-top: 32px
+		}
+
+		.lists>div {
+			padding: 0 26px
+		}
+
+		.lists>div:first-child {
+			padding-left: 0
+		}
+
+		.lists>div:last-child {
+			padding-right: 0;
+			border-left: 1px solid var(--line)
+		}
+
+		.cause-row.me {
+			font-weight: 700
+		}
+
+		.track {
+			height: 5px;
+			background: var(--soft);
+			margin-top: 4px
+		}
+
+		.track i {
+			display: block;
+			height: 100%;
+			background: var(--sage)
+		}
+
+		details {
+			border-top: 1px solid var(--line);
+			padding: 12px 0
+		}
+
+		summary {
+			cursor: pointer;
+			font: 500 17px Georgia, serif
+		}
+
+		details p,
+		details li {
+			font-size: 13px;
+			color: #4d463d;
+			line-height: 1.7
+		}
+
+		code {
+			background: var(--soft);
+			padding: 1px 5px;
+			border-radius: 3px;
+			font-size: 12px
+		}
+
+		#status {
+			margin: 12px 0 0;
+			font-size: 12px;
+			color: var(--muted)
+		}
+
+		#status.error {
+			color: #a33
+		}
+
+		footer {
+			padding: 30px 0 40px;
+			color: var(--muted);
+			font-size: 11px;
+			line-height: 1.8
+		}
+
+		footer a,
+		details a {
+			color: var(--rust)
+		}
+
+		@media(max-width:800px) {
+			.lists {
+				grid-template-columns: 1fr
+			}
+
+			.lists>div {
+				padding: 0
+			}
+
+			.lists>div:last-child {
+				border-left: 0;
+				border-top: 1px solid var(--line);
+				padding-top: 20px;
+				margin-top: 20px
+			}
+
+			.form,
+			.life,
+			.charts {
+				grid-template-columns: 1fr
+			}
+
+			.stats {
+				grid-template-columns: 1fr 1fr
+			}
+
+			.counter {
+				font-size: 64px
+			}
+		}
+
+		@media(prefers-reduced-motion:reduce) {
+			* {
+				animation: none !important
+			}
+		}
+	</style>
 </head>
+
 <body>
-<header>VIDA <span>LONGA</span></header>
-<main>
+	<header>VIDA <span>LONGA</span></header>
+	<main>
 
-<section class="hero">
-  <p class="eyebrow">UM EXPERIMENTO MENTAL COM DADOS DE MORTALIDADE</p>
-  <h1>E se não morrêssemos mais<br><em>de doença alguma?</em></h1>
-  <p>Sem câncer, sem infarto, sem COVID, sem envelhecimento. Sem causas internas, sobram só as causas externas: trânsito, quedas, afogamentos, violência e o azar em geral. Escolha um perfil (idade, sexo e estado) e descubra por quanto tempo essa pessoa duraria e a causa do fim de seus dias. Corpo e comportamento ficam "congelados" na idade escolhida: o risco nunca muda, só o calendário.</p>
-</section>
+		<section class="hero">
+			<p class="eyebrow">UM EXPERIMENTO MENTAL COM DADOS DE MORTALIDADE BRASILEIRA</p>
+			<h1>E se não morrêssemos mais<br><em>de doenças nem de velhice?</em></h1>
+			<p>Imagine um mundo sem mortes por câncer, infarto, dengue ou envelhecimento. Mesmo com as doenças curadas e
+				o envelhecimento derrotado, a morte não desapareceria por completo. Sem as causas internas, restariam as
+				externas: acidentes, violência e outros imprevistos. Quão longa seria a vida de uma pessoa nesse mundo?
+			</p>
+		</section>
 
-<section class="panel">
-  <p class="eyebrow">01 / PERFIL</p>
-  <div class="form">
-    <div><label for="age">Idade congelada: <output id="ageOut">30</output> anos</label><input id="age" type="range" min="0" max="90" value="30"></div>
-    <div><label for="sex">Sexo</label><select id="sex"><option value="F">Feminino</option><option value="M">Masculino</option></select></div>
-    <div><label for="uf">Estado</label><select id="uf"></select></div>
-    <div><label for="runs">Vidas simuladas</label>
-      <select id="runs"><option value="1000">1.000</option><option value="10000" selected>10.000</option><option value="100000">100.000</option></select></div>
-    <button id="go" disabled>Viver →</button>
-  </div>
-  <label class="chk"><input type="checkbox" id="smooth" checked> Suavizar a taxa (agrupa idades vizinhas, ±2 anos)</label>
-  <p id="status">Carregando dados…</p>
-</section>
+		<section class="panel">
+			<p class="eyebrow">01 / PERFIL</p>
+			<p class="instructions">
+				Defina uma idade, sexo e estado para descobrir quanto tempo essa pessoa poderia viver nesse mundo.
+			</p>
+			<div class="form">
+				<div><label for="age">Idade biológica: <output id="ageOut">30</output> anos</label><input id="age"
+						type="range" min="0" max="90" value="30"></div>
+				<div><label for="sex">Sexo</label><select id="sex">
+						<option value="F">Feminino</option>
+						<option value="M">Masculino</option>
+					</select></div>
+				<div><label for="uf">Estado</label><select id="uf"></select></div>
+				<div><label for="runs">Vidas simuladas</label>
+					<select id="runs">
+						<option value="1000">1.000</option>
+						<option value="10000" selected>10.000</option>
+						<option value="100000">100.000</option>
+					</select>
+				</div>
+				<button id="go" disabled>Viver →</button>
+			</div>
+			<label class="chk"><input type="checkbox" id="smooth" checked> Suavizar a taxa (agrupa idades vizinhas, ±2
+				anos)</label>
+			<p id="status">Carregando dados…</p>
+		</section>
 
-<section class="panel hidden" id="lifePanel">
-  <p class="eyebrow">02 / UMA VIDA POSSÍVEL</p>
-  <div class="life">
-    <div>
-      <div class="counter"><span id="counter">—</span> <small>anos</small></div>
-      <div class="progress"><div id="progress"></div></div>
-      <p class="muted" id="milestone" aria-live="polite"></p>
-      <div id="result" class="hidden">
-        <h2 id="verdict"></h2>
-        <div class="cause"><div class="emoji" id="emoji"></div><div><small class="muted">CAUSA DA MORTE</small><strong id="causeName"></strong><span class="muted" id="causeCode"></span></div></div>
-        <p class="moral" id="moral"></p>
-      </div>
-    </div>
-    <div><h3>Onde essa causa mora na classificação (CID-10, usada no SIM)</h3><div class="tree" id="tree"><span class="muted">A árvore aparece quando a vida acabar.</span></div></div>
-  </div>
-  <div class="actions"><button id="again" disabled>Viver de novo ↻</button><button id="reset" class="ghost">Reiniciar</button></div>
-</section>
+		<section class="panel hidden" id="lifePanel">
+			<p class="eyebrow">02 / UMA VIDA POSSÍVEL</p>
+			<div class="life">
+				<div>
+					<div class="counter"><span id="counter">—</span> <small>anos</small></div>
+					<div class="progress">
+						<div id="progress"></div>
+					</div>
+					<p class="muted" id="milestone" aria-live="polite"></p>
+					<div id="result" class="hidden">
+						<h2 id="verdict"></h2>
+						<div class="cause">
+							<div class="emoji" id="emoji"></div>
+							<div><small class="muted">CAUSA DA MORTE</small><strong id="causeName"></strong><span
+									class="muted" id="causeCode"></span></div>
+						</div>
+						<p class="moral" id="moral"></p>
+					</div>
+				</div>
+				<div>
+					<h3>Onde essa causa mora na classificação (CID-10, usada no SIM)</h3>
+					<div class="tree" id="tree"><span class="muted">A árvore aparece quando a vida acabar.</span></div>
+				</div>
+			</div>
+			<div class="actions"><button id="again" disabled>Viver de novo ↻</button><button id="reset"
+					class="ghost">Reiniciar</button></div>
+		</section>
 
-<section class="panel hidden" id="manyPanel">
-  <p class="eyebrow">03 / MUITAS VIDAS</p>
-  <h2 id="manyTitle"></h2>
-  <div class="stats">
-    <div class="stat"><span>Idade média ao morrer</span><strong id="mean">—</strong></div>
-    <div class="stat"><span>Idade mediana</span><strong id="median">—</strong></div>
-    <div class="stat"><span>Faixa central de 80%</span><strong id="range">—</strong></div>
-    <div class="stat"><span>Vida mais longa</span><strong id="max">—</strong></div>
-  </div>
-  <p class="muted" id="funFact" style="margin-top:14px"></p>
-  <div style="margin-top:25px"><h3>Idade ao morrer</h3><div class="histogram" id="hist"></div><div class="muted hist-labels" id="histLabels"></div><p class="muted" id="histLegend"></p></div>
-  <div class="lists">
-    <div><h3>Causas mais frequentes de morte</h3><p class="muted">Percentual das vidas simuladas que terminaram em cada causa.</p><div id="bars"></div></div>
-    <div><h3>Causas menos frequentes de morte</h3><p class="muted" id="rareNote"></p><div id="rare"></div></div>
-  </div>
-  <p class="muted" id="profileNote" style="margin-top:20px"></p>
-</section>
+		<section class="panel hidden" id="manyPanel">
+			<p class="eyebrow">03 / MUITAS VIDAS</p>
+			<h2 id="manyTitle"></h2>
+			<div class="stats">
+				<div class="stat">
+					<span>Idade média ao morrer</span>
+					<div class="stat-value">
+						<strong id="mean">—</strong>
+						<small>anos</small>
+					</div>
+				</div>
 
-<section class="panel hidden" id="sharePanel">
-  <p class="eyebrow">04 / COMPARTILHAR</p>
-  <h2>Mostre ao mundo como você (não) morreria</h2>
-  <div class="actions" style="margin-top:0">
-    <button id="share">📤 Compartilhar</button>
-    <button id="dl" class="ghost">⬇ Baixar imagem</button>
-  </div>
-</section>
+				<div class="stat">
+					<span>Idade mediana</span>
+					<div class="stat-value">
+						<strong id="median">—</strong>
+						<small>anos</small>
+					</div>
+				</div>
 
-<section class="panel">
-  <p class="eyebrow">05 / POR TRÁS DA CONTA</p>
-  <details><summary>Como a conta é feita</summary>
-    <p>Para o perfil escolhido (sexo, estado e a idade congelada), a taxa anual é <code>m = óbitos / população</code> naquela idade, e a chance de morrer em um ano é <code>p = 1 − exp(−m)</code>. Como o corpo e o comportamento ficam congelados, o risco nunca muda: todo ano é o mesmo dado. Com a suavização ligada, <code>m</code> usa as idades vizinhas (±2 anos): óbitos somados dividido por população somada. Se nem assim houver mortes, a janela se amplia até encontrar, e a página avisa quais idades foram usadas. O tempo de espera até a morte é então exponencial, <code>anos = ⌊−ln(U) / m⌋</code>, com U uniforme em (0,1), e a idade ao morrer é a idade inicial mais esses anos.</p>
-    <p>A causa é sorteada com peso proporcional ao número de óbitos de cada causa naquela idade, sexo e estado. O contador sobe, mas só o calendário: o risco continua o da idade escolhida.</p>
-  </details>
-  <details><summary>Por que alguém viveria séculos (ou milênios)?</summary>
-    <p>Com risco constante, o tempo médio de espera é 1/m. Se m é 0,05% ao ano, são em média 2.000 anos. Experimente idades diferentes: o risco varia bastante entre elas, e escolher a idade é escolher o risco. A distribuição é assimétrica, como no decaimento radioativo, só que com tropeções: muita gente morre cedo e uma minoria improvável chega a dezenas de milhares de anos.</p>
-  </details>
-  <details><summary>O que o modelo ignora (bastante coisa)</summary>
-    <p>Sem doenças, a sociedade e a condição humana mudariam por completo, e nada garante que o risco de 2024 se mantivesse. O modelo ignora essas mudanças, a história, o comportamento individual e as diferenças de exposição. Congelar o corpo é uma escolha do experimento; outra seria continuar envelhecendo, com o risco mudando a cada aniversário. Isto é um experimento mental, não uma previsão.</p>
-  </details>
-  <details><summary>Dados e limitações</summary>
-    <p>Fontes: <a href="https://dadosabertos.saude.gov.br/dataset/sim" target="_blank" rel="noopener">SIM/DATASUS</a> (óbitos por causas externas, capítulo XX da CID-10) e <a href="https://www.ibge.gov.br/estatisticas/sociais/populacao/9109-populacao-estimada.html" target="_blank" rel="noopener">estimativas e projeções populacionais do IBGE</a>; ano de referência 2024. Como uma única linha (sexo, idade, estado) define a vida inteira, estados pequenos geram taxas ruidosas. Taxa zero significa "nenhuma morte observada", não "risco zero"; quando não há mortes na idade, a página amplia a janela de idades vizinhas até encontrar algumas (somando óbitos e população, o que pesa mais as idades com mais gente) e avisa. Só se não houver nenhuma morte em todo o perfil a pessoa aparece como imortal.</p>
-  </details>
-</section>
+				<div class="stat">
+					<span>Faixa central de 80%</span>
+					<div class="stat-value">
+						<strong id="range">—</strong>
+						<small>anos</small>
+					</div>
+				</div>
 
-<footer>
-  VIDA LONGA · Um experimento mental com dados de mortalidade. ·
-  <a id="repo" target="_blank" rel="noopener">Código no GitHub</a><span id="cvv" class="hidden"><br>Se você ou alguém próximo precisa de apoio emocional: CVV, 188 (24h, gratuito), ou cvv.org.br.</span>
-</footer>
-</main>
+				<div class="stat">
+					<span>Vida mais longa</span>
+					<div class="stat-value">
+						<strong id="max">—</strong>
+						<small>anos</small>
+					</div>
+				</div>
+			</div>
+			<p class="muted" id="funFact" style="margin-top:14px"></p>
+			<div style="margin-top:25px">
+				<h3>Idade ao morrer</h3>
+				<div class="histogram" id="hist"></div>
+				<div class="muted hist-labels" id="histLabels"></div>
+				<p class="muted" id="histLegend"></p>
+			</div>
+			<div class="lists">
+				<div>
+					<h3>Causas mais frequentes de morte</h3>
+					<p class="muted">Percentual das vidas simuladas que terminaram em cada causa.</p>
+					<div id="bars"></div>
+				</div>
+				<div>
+					<h3>Causas menos frequentes de morte</h3>
+					<p class="muted" id="rareNote"></p>
+					<div id="rare"></div>
+				</div>
+			</div>
+			<p class="muted" id="profileNote" style="margin-top:20px"></p>
+		</section>
 
-<script>
-"use strict";
-const REPO_URL = "https://github.com/ferdesmello/vida-longa";
-const CSV_TOTAL = "data/processed_data/mortality_total.csv";
-const CSV_CAUSE = "data/processed_data/mortality_by_cause.csv";
-const UF_NAMES = {AC:"Acre",AL:"Alagoas",AP:"Amapá",AM:"Amazonas",BA:"Bahia",CE:"Ceará",DF:"Distrito Federal",ES:"Espírito Santo",GO:"Goiás",MA:"Maranhão",MT:"Mato Grosso",MS:"Mato Grosso do Sul",MG:"Minas Gerais",PA:"Pará",PB:"Paraíba",PR:"Paraná",PE:"Pernambuco",PI:"Piauí",RJ:"Rio de Janeiro",RN:"Rio Grande do Norte",RS:"Rio Grande do Sul",RO:"Rondônia",RR:"Roraima",SC:"Santa Catarina",SP:"São Paulo",SE:"Sergipe",TO:"Tocantins"};
+		<section class="panel hidden" id="sharePanel">
+			<p class="eyebrow">04 / COMPARTILHAR</p>
+			<h2>Mostre ao mundo como você (não) morreria</h2>
+			<div class="actions" style="margin-top:0">
+				<button id="share">📤 Compartilhar</button>
+				<button id="dl" class="ghost">⬇ Baixar imagem</button>
+			</div>
+		</section>
 
-/* ---------- Classificação CID-10, capítulo XX (como no SIM) ---------- */
-const GROUPS = [
-  ["V01","V99","Acidentes de transporte"],
-  ["W00","X59","Outras causas externas de lesões acidentais"],
-  ["X60","X84","Lesões autoprovocadas voluntariamente"],
-  ["X85","Y09","Agressões"],
-  ["Y10","Y34","Eventos cuja intenção é indeterminada"]];
-const BLOCKS = [
-  ["V01","V09","Pedestre traumatizado"],["V10","V19","Ciclista traumatizado"],["V20","V29","Motociclista traumatizado"],
-  ["V30","V39","Ocupante de triciclo motorizado"],["V40","V49","Ocupante de automóvel"],["V50","V59","Ocupante de caminhonete"],
-  ["V60","V69","Ocupante de veículo pesado"],["V70","V79","Ocupante de ônibus"],["V80","V89","Outros acidentes de transporte terrestre"],
-  ["V90","V94","Acidentes de transporte por água"],["V95","V97","Acidentes de transporte aéreo e espacial"],["V98","V99","Outros acidentes de transporte"],
-  ["W00","W19","Quedas"],["W20","W49","Exposição a forças mecânicas inanimadas"],["W50","W64","Exposição a forças mecânicas animadas"],
-  ["W65","W74","Afogamento e submersão acidentais"],["W75","W84","Outros riscos acidentais à respiração"],
-  ["W85","W99","Corrente elétrica, radiação e temperaturas extremas"],["X00","X09","Fumaça, fogo e chamas"],
-  ["X10","X19","Contato com calor e substâncias quentes"],["X20","X29","Contato com animais e plantas venenosos"],
-  ["X30","X39","Forças da natureza"],["X40","X49","Envenenamento acidental"],["X50","X57","Excesso de esforços, viagens e privações"],
-  ["X58","X59","Outros fatores acidentais"],
-  ["X60","X69","Autointoxicação intencional por substâncias nocivas"],["X70","X84","Lesões autoprovocadas intencionalmente por outros meios"]];
-/* emoji: primeira faixa que casar vence (específico → geral) */
-const EMOJI = [
-  ["V80","V80","🐴"],["V81","V82","🚆"],["V83","V86","🚜"],["V87","V89","🚦"],["V90","V94","🚤"],["V95","V97","✈️"],["V98","V99","🚧"],
-  ["V01","V09","🚶"],["V10","V19","🚲"],["V20","V29","🏍️"],["V30","V39","🛺"],["V40","V49","🚗"],["V50","V59","🛻"],["V60","V69","🚛"],["V70","V79","🚌"],
-  ["W01","W01","🍌"],["W06","W08","🛏️"],["W10","W11","🪜"],["W12","W13","🏗️"],["W14","W14","🌳"],["W18","W18","🚿"],["W00","W19","🤕"],
-  ["W25","W25","🪟"],["W26","W26","🔪"],["W32","W34","💥"],["W39","W39","🎆"],["W44","W45","🔍"],["W20","W49","🔨"],
-  ["W50","W51","🥊"],["W52","W52","👥"],["W53","W53","🐀"],["W54","W54","🐕"],["W55","W55","🐄"],["W57","W57","🐝"],["W58","W58","🐊"],["W50","W64","🐾"],
-  ["W65","W66","🛁"],["W67","W68","🏊"],["W65","W74","🌊"],["W75","W75","🛏️"],["W78","W78","🤢"],["W79","W79","🍖"],["W75","W84","😮‍💨"],
-  ["W85","W87","🔌"],["W88","W91","☢️"],["W92","W92","🥵"],["W93","W93","🥶"],["W94","W94","🤿"],["W99","W99","❔"],
-  ["X00","X09","🔥"],["X10","X19","♨️"],["X20","X20","🐍"],["X21","X21","🕷️"],["X22","X22","🦂"],["X23","X23","🐝"],["X29","X29","🌿"],["X20","X29","🐛"],
-  ["X30","X30","🥵"],["X31","X31","🥶"],["X32","X32","☀️"],["X33","X33","⚡"],["X34","X34","🏚️"],["X35","X35","🌋"],["X36","X36","🏔️"],["X37","X37","🌪️"],["X38","X38","🌊"],["X39","X39","🌍"],
-  ["X45","X45","🍺"],["X47","X47","💨"],["X48","X48","🧪"],["X40","X49","💊"],["X50","X50","🏋️"],["X51","X51","🧳"],["X53","X53","🍽️"],["X54","X54","🚰"],["X50","X57","😓"],["X58","X59","❔"],
-  ["X60","X69","💊"],["X70","X70","🪢"],["X71","X71","🌊"],["X72","X74","🔫"],["X75","X75","💣"],["X76","X76","🔥"],["X77","X77","♨️"],["X78","X78","🔪"],["X79","X79","🪨"],["X80","X80","🏢"],["X81","X81","🚦"],["X82","X82","🚗"],["X83","X84","⚠️"],
-  ["X93","X95","🔫"],["X96","X96","💣"],["X97","X97","🔥"],["X98","X98","♨️"],["X99","X99","🔪"],["Y00","Y00","🪨"],["Y01","Y01","🏢"],["Y02","Y03","🚗"],["Y04","Y04","👊"],["Y06","Y07","💔"],["Y08","Y09","❔"],["X85","Y09","⚠️"],
-  ["Y10","Y19","💊"],["Y22","Y24","🔫"],["Y25","Y25","💣"],["Y26","Y26","🔥"],["Y28","Y28","🔪"],["Y29","Y29","🪨"],["Y30","Y31","⬇️"],["Y32","Y32","🚗"],["Y34","Y34","🤷"]];
-const VICTIM = ["Pedestre","Ciclista","Motociclista","Ocupante de triciclo","Ocupante de carro","Ocupante de caminhonete","Ocupante de caminhão","Ocupante de ônibus"];
-const TARGET = ["pedestre ou animal","bicicleta","moto ou triciclo","carro ou caminhonete","caminhão ou ônibus","trem","veículo não motorizado","objeto fixo"];
-const NAMES = {
-  V80:"Cavaleiro ou veículo de tração animal",V81:"Trem ou veículo ferroviário",V83:"Veículo especial industrial",V84:"Veículo especial agrícola",V87:"Colisão entre veículos de tipos especificados",V88:"Acidente não de trânsito",V89:"Acidente com veículo de tipo não especificado",
-  V90:"Embarcação: naufrágio com afogamento",V92:"Afogamento por queda de embarcação",V95:"Aeronave motorizada",V96:"Aeronave sem motor",V98:"Outros acidentes de transporte",V99:"Acidente de transporte não especificado",
-  W01:"Escorregão, tropeção ou passo em falso",W03:"Queda por empurrão ou colisão com outra pessoa",W06:"Queda de cama",W10:"Queda em escada ou degraus",W11:"Queda de escada de mão",W12:"Queda de andaime",W13:"Queda de edifício",W14:"Queda de árvore",W17:"Outra queda de um nível a outro",W18:"Outra queda no mesmo nível",W19:"Queda sem especificação",
-  W25:"Contato com vidro cortante",W26:"Contato com faca ou objeto cortante",W32:"Disparo acidental de arma curta",W34:"Disparo acidental de outra arma de fogo",W69:"Afogamento em águas naturais",W65:"Afogamento em banheira",W67:"Afogamento em piscina",W73:"Outro afogamento especificado",W74:"Afogamento não especificado",
-  W75:"Sufocação na cama",W76:"Enforcamento ou estrangulamento acidental",W78:"Inalação de conteúdo gástrico",W79:"Engasgo com alimento",W84:"Risco não especificado à respiração",W85:"Linha de transmissão elétrica",W86:"Outra corrente elétrica",W99:"Outros fatores não especificados",
-  X00:"Fogo em edifício",X04:"Substância muito inflamável",X09:"Fumaça, fogo ou chamas não especificados",X33:"Raio",X38:"Inundação",X44:"Envenenamento acidental por outras drogas",X45:"Envenenamento acidental por álcool",X47:"Envenenamento por gases e vapores",X48:"Envenenamento por pesticidas",X59:"Exposição a fator não especificado",
-  X60:"Autointoxicação por analgésicos, antipiréticos e antirreumáticos",X61:"Autointoxicação por antiepilépticos, sedativos, hipnóticos, antiparkinsonianos e psicotrópicos",X62:"Autointoxicação por narcóticos e psicodislépticos",X63:"Autointoxicação por outras drogas que atuam sobre o sistema nervoso autônomo",X64:"Autointoxicação por outras drogas e medicamentos",X65:"Autointoxicação por álcool",X66:"Autointoxicação por solventes orgânicos e hidrocarbonetos halogenados",X67:"Autointoxicação por outros gases e vapores",X68:"Autointoxicação por pesticidas",X69:"Autointoxicação por outros produtos químicos e substâncias nocivas",X70:"Lesão autoprovocada por enforcamento, estrangulamento ou sufocação",X71:"Lesão autoprovocada por afogamento e submersão",X72:"Lesão autoprovocada por disparo de arma de fogo de mão",X73:"Lesão autoprovocada por disparo de espingarda, carabina ou arma de fogo maior",X74:"Lesão autoprovocada por disparo de outra arma de fogo ou não especificada",X75:"Lesão autoprovocada por dispositivo explosivo",X76:"Lesão autoprovocada por fumaça, fogo e chamas",X77:"Lesão autoprovocada por vapor de água, gases ou objetos quentes",X78:"Lesão autoprovocada por objeto cortante ou penetrante",X79:"Lesão autoprovocada por objeto contundente",X80:"Lesão autoprovocada por precipitação de lugar elevado",X81:"Lesão autoprovocada por jogar-se ou deitar-se diante de objeto em movimento",X82:"Lesão autoprovocada por impacto de veículo a motor",X83:"Lesão autoprovocada por outros meios especificados",X84:"Lesão autoprovocada por meios não especificados",
-  X91:"Agressão por enforcamento",X93:"Agressão por disparo de arma curta",X94:"Agressão por disparo de espingarda ou carabina",X95:"Agressão por disparo de outra arma de fogo ou de arma de fogo não especificada",X96:"Agressão por explosivos",X99:"Agressão por objeto cortante ou penetrante",Y00:"Agressão por objeto contundente",Y01:"Agressão por precipitação de lugar elevado",Y04:"Agressão por força corporal",Y05:"Agressão sexual por força física",Y06:"Negligência e abandono",Y07:"Outras síndromes de maus-tratos",Y08:"Agressão por outros meios",Y09:"Agressão por meios não especificados",
-  Y10:"Envenenamento, intenção indeterminada",Y20:"Enforcamento, intenção indeterminada",Y21:"Afogamento, intenção indeterminada",Y22:"Disparo de arma curta, intenção indeterminada",Y23:"Disparo de fuzil ou espingarda, intenção indeterminada",Y24:"Disparo de outra arma de fogo ou de arma de fogo não especificada, intenção indeterminada",Y28:"Objeto cortante, intenção indeterminada",Y29:"Objeto contundente, intenção indeterminada",Y30:"Queda ou precipitação, intenção indeterminada",Y32:"Impacto de veículo, intenção indeterminada",Y33:"Outros fatos especificados, intenção indeterminada",Y34:"Fatos ou eventos não especificados, intenção indeterminada"};
+		<section class="panel">
+			<p class="eyebrow">05 / POR TRÁS DA CONTA</p>
+			<details>
+				<summary>Como isso é feito</summary>
+				<p>Para o perfil escolhido (idade, sexo e estado), a taxa anual é <code>m = óbitos / população</code>
+					naquela idade, e a chance de morrer em um ano é <code>p = 1 − exp(−m)</code>. Como o corpo e o
+					comportamento ficam congelados, o risco nunca muda: todo ano é o mesmo dado. Com a suavização
+					ligada, <code>m</code> usa as idades vizinhas (±2 anos): óbitos somados dividido por população
+					somada. Se nem assim houver mortes, a janela se amplia até encontrar, e a página avisa quais idades
+					foram usadas. O tempo de espera até a morte é então exponencial, <code>anos = ⌊−ln(U) / m⌋</code>,
+					com U uniforme em (0,1), e a idade ao morrer é a idade inicial mais esses anos.</p>
+				<p>A causa é sorteada com peso proporcional ao número de óbitos de cada causa naquela idade biológica,
+					sexo e estado. O contador de idade sobe, mas só no calendário: o risco continua o da idade
+					biológica escolhida.</p>
+			</details>
+			<details>
+				<summary>Por que alguém viveria tanto?</summary>
+				<p>Com risco constante, o tempo médio de espera é 1/m. Se m é 0,05% ao ano, são em média 2.000 anos.
+					Experimente idades diferentes: o risco varia bastante entre elas, e escolher a idade é escolher o
+					risco. A distribuição é assimétrica, como no decaimento radioativo, só que com tropeções: muita
+					gente morre cedo e uma minoria improvável chega a dezenas de milhares de anos.</p>
+			</details>
+			<details>
+				<summary>Isso faz sentido?</summary>
+				<p>Sem doenças e envelhecimento (obrigatório), a sociedade e a condição humana mudariam radicalmente, e
+					os riscos mudariam também. O modelo ignora essas mudanças, a história, o comportamento individual e
+					as diferenças de exposição. "Congelar" o corpo (e o risco) numa certa idade é uma escolha do
+					experimento; outra seria continuar envelhecendo, com o risco mudando a cada aniversário. Também, é
+					improvável que a medicina avance tanto em causas internas e não também em causas externas. Mas isto
+					é
+					um experimento mental, não uma previsão. Ainda assim, é um experimento divertido, até para ver o
+					potencial de tal empreitada.</p>
+			</details>
+			<details>
+				<summary>Dados e limitações</summary>
+				<p>Fontes: <a href="https://dadosabertos.saude.gov.br/dataset/sim" target="_blank"
+						rel="noopener">SIM/DATASUS</a> (óbitos por causas externas, capítulo XX da CID-10) e <a
+						href="https://www.ibge.gov.br/estatisticas/sociais/populacao/9109-populacao-estimada.html"
+						target="_blank" rel="noopener">estimativas e projeções populacionais do IBGE</a>; ano de
+					referência 2024. Como uma única linha (idade, sexo, estado) define a vida inteira, estados pequenos
+					geram taxas ruidosas. Taxa zero significa "nenhuma morte observada", não "risco zero"; quando não há
+					mortes na idade, a página amplia a janela de idades vizinhas até encontrar algumas (somando óbitos e
+					população, o que pesa mais as idades com mais gente) e avisa. Só se não houver nenhuma morte em todo
+					o perfil a pessoa aparece como imortal.</p>
+			</details>
+		</section>
 
-const key = c => c.charCodeAt(0)*100 + parseInt(c.slice(1),10);
-const inRange = (c,[a,b]) => key(c)>=key(a) && key(c)<=key(b);
-const findGroup = c => GROUPS.find(g=>inRange(c,g));
-const findBlock = c => BLOCKS.find(b=>inRange(c,b));
-const isSelf = c => c && inRange(c,["X60","X84"]);
-function emojiOf(c){ if(!c) return "❔"; const e=EMOJI.find(r=>inRange(c,r)); return e?e[2]:"❔"; }
-function nameOf(c){
-  if(!c) return "Causa não especificada";
-  if(NAMES[c]) return NAMES[c];
-  const m=c.match(/^V([0-7])(\d)$/);
-  if(m){ const u=+m[2]; const t = u===8 ? ": acidente sem colisão" : u===9 ? ": outros acidentes" : " × "+TARGET[u]; return VICTIM[+m[1]]+t; }
-  const b=findBlock(c), g=findGroup(c); return (b||g)?(b||g)[2]:"Causa externa";
-}
-function moralOf(c){
-  const g=findGroup(c||"");
-  if(isSelf(c)) return {t:"Sem piada aqui: é uma causa de morte evitável, e conversar sobre isso ajuda, mesmo depois de séculos ou milênios.",crisis:true};
-  if(g&&g[2]==="Agressões") return {t:"Sem piada aqui: a violência está entre as maiores causas externas de morte no país.",crisis:false};
-  if(!g) return {t:"Nem o atestado soube explicar. Mistério digno de detetive.",crisis:false};
-  if(g[2]==="Acidentes de transporte") return {t:"Moral da história: olhe para os dois lados. Depois olhe de novo.",crisis:false};
-  if(g[2].startsWith("Eventos")) return {t:"A intenção ficou em branco no atestado. A burocracia também mata, só que em silêncio.",crisis:false};
-  const b=findBlock(c); const n=b?b[2]:"";
-  if(n==="Quedas") return {t:"O chão sempre vence. Sempre.",crisis:false};
-  if(n.startsWith("Afogamento")) return {t:"Sem doenças, mas com água: ela ainda ganha.",crisis:false};
-  if(n.startsWith("Outros riscos")) return {t:"Mastigue devagar. É sério.",crisis:false};
-  if(n.startsWith("Fumaça")) return {t:"Detector de fumaça custa pouco. Esta lição, nem tanto.",crisis:false};
-  if(n.startsWith("Envenenamento")) return {t:"Rótulos existem por um motivo.",crisis:false};
-  if(n.startsWith("Corrente")) return {t:"Gambiarra: 1. Eletricista: 0.",crisis:false};
-  if(n.includes("animais")||n.includes("natureza")) return {t:"A natureza é fofa até o momento em que deixa de ser.",crisis:false};
-  return {t:"A vida tem seus riscos, mesmo sem doenças.",crisis:false};
-}
-/* [idade, texto no feminino, texto no masculino] */
-const MILESTONES = [
-  [100,"🎂 Centenária! O bolo tem velas demais.","🎂 Centenário! O bolo tem velas demais."],
-  [204,"Já é mais velha que a Independência do Brasil.","Já é mais velho que a Independência do Brasil."],
-  [526,"Mais velha que o \"descobrimento\" do Brasil. Viu tudo.","Mais velho que o \"descobrimento\" do Brasil. Viu tudo."],
-  [1000,"Um milênio. Que cansaço.","Um milênio. Que cansaço."],
-  [2026,"Já viveu mais do que o calendário que usamos.","Já viveu mais do que o calendário que usamos."],
-  [5000,"Viu a escrita ser inventada.","Viu a escrita ser inventada."],
-  [12000,"Viu o fim da última Era do Gelo.","Viu o fim da última Era do Gelo."]];
+		<footer>
+			VIDA LONGA · Um experimento mental com dados de mortalidade brasileira ·
+			<a id="repo" target="_blank" rel="noopener">Código no GitHub</a><span id="cvv" class="hidden"><br>Se você ou
+				alguém próximo precisa de apoio emocional: CVV, 188 (24h, gratuito), ou <a href="https://cvv.org.br/"
+					target="_blank" rel="noopener">cvv.org.br</a>.</span>
+		</footer>
+	</main>
 
-/* ---------- Dados e modelo ---------- */
-const $ = id => document.getElementById(id);
-let selfInTop=false, totalRows=[], causeRows=[], P=null, many=null, last=null, token=0;
+	<script>
+		"use strict";
+		const REPO_URL = "https://github.com/ferdesmello/vida-longa";
+		const CSV_TOTAL = "data/processed_data/mortality_total.csv";
+		const CSV_CAUSE = "data/processed_data/mortality_by_cause.csv";
+		const CSV_CID = "data/processed_data/cid10_causas_externas.csv"; // código;nome oficial (CID-10, cap. XX)
+		const USE_OFFICIAL_NAMES = true; // false = usa os nomes curtos escritos à mão neste arquivo
+		const CID = new Map();
+		const UF_NAMES = { AC: "Acre", AL: "Alagoas", AP: "Amapá", AM: "Amazonas", BA: "Bahia", CE: "Ceará", DF: "Distrito Federal", ES: "Espírito Santo", GO: "Goiás", MA: "Maranhão", MT: "Mato Grosso", MS: "Mato Grosso do Sul", MG: "Minas Gerais", PA: "Pará", PB: "Paraíba", PR: "Paraná", PE: "Pernambuco", PI: "Piauí", RJ: "Rio de Janeiro", RN: "Rio Grande do Norte", RS: "Rio Grande do Sul", RO: "Rondônia", RR: "Roraima", SC: "Santa Catarina", SP: "São Paulo", SE: "Sergipe", TO: "Tocantins" };
 
-function parseCSV(text){
-  const lines=text.trim().split(/\r?\n/), d=lines[0].includes(";")?";":",";
-  const h=lines.shift().split(d).map(x=>x.trim().replace(/^\uFEFF/,"").toLowerCase());
-  return lines.map(l=>{const v=l.split(d);return Object.fromEntries(h.map((k,i)=>[k,(v[i]??"").trim()]));});
-}
-const num = x => Number(x);
+		/* ---------- Classificação CID-10, capítulo XX (como no SIM) ---------- */
+		const GROUPS = [
+			["V01", "V99", "Acidentes de transporte"],
+			["W00", "X59", "Outras causas externas de lesões acidentais"],
+			["X60", "X84", "Lesões autoprovocadas voluntariamente"],
+			["X85", "Y09", "Agressões"],
+			["Y10", "Y34", "Eventos cuja intenção é indeterminada"]];
+		const BLOCKS = [
+			["V01", "V09", "Pedestre traumatizado"], ["V10", "V19", "Ciclista traumatizado"], ["V20", "V29", "Motociclista traumatizado"],
+			["V30", "V39", "Ocupante de triciclo motorizado"], ["V40", "V49", "Ocupante de automóvel"], ["V50", "V59", "Ocupante de caminhonete"],
+			["V60", "V69", "Ocupante de veículo pesado"], ["V70", "V79", "Ocupante de ônibus"], ["V80", "V89", "Outros acidentes de transporte terrestre"],
+			["V90", "V94", "Acidentes de transporte por água"], ["V95", "V97", "Acidentes de transporte aéreo e espacial"], ["V98", "V99", "Outros acidentes de transporte"],
+			["W00", "W19", "Quedas"], ["W20", "W49", "Exposição a forças mecânicas inanimadas"], ["W50", "W64", "Exposição a forças mecânicas animadas"],
+			["W65", "W74", "Afogamento e submersão acidentais"], ["W75", "W84", "Outros riscos acidentais à respiração"],
+			["W85", "W99", "Corrente elétrica, radiação e temperaturas extremas"], ["X00", "X09", "Fumaça, fogo e chamas"],
+			["X10", "X19", "Contato com calor e substâncias quentes"], ["X20", "X29", "Contato com animais e plantas venenosos"],
+			["X30", "X39", "Forças da natureza"], ["X40", "X49", "Envenenamento acidental"], ["X50", "X57", "Excesso de esforços, viagens e privações"],
+			["X58", "X59", "Outros fatores acidentais"],
+			["X60", "X69", "Autointoxicação intencional por substâncias nocivas"], ["X70", "X84", "Lesões autoprovocadas intencionalmente por outros meios"]];
+		/* emoji: primeira faixa que casar vence (específico → geral) */
+		const EMOJI = [
+			["V80", "V80", "🐴"], ["V81", "V82", "🚆"], ["V83", "V86", "🚜"], ["V87", "V89", "🚦"], ["V90", "V94", "🚤"], ["V95", "V97", "✈️"], ["V98", "V99", "🚧"],
+			["V01", "V09", "🚶"], ["V10", "V19", "🚲"], ["V20", "V29", "🏍️"], ["V30", "V39", "🛺"], ["V40", "V49", "🚗"], ["V50", "V59", "🛻"], ["V60", "V69", "🚛"], ["V70", "V79", "🚌"],
+			["W01", "W01", "🍌"], ["W06", "W08", "🛏️"], ["W10", "W11", "🪜"], ["W12", "W13", "🏗️"], ["W14", "W14", "🌳"], ["W18", "W18", "🚿"], ["W00", "W19", "🤕"],
+			["W25", "W25", "🪟"], ["W26", "W26", "🔪"], ["W32", "W34", "💥"], ["W39", "W39", "🎆"], ["W44", "W45", "🔍"], ["W20", "W49", "🔨"],
+			["W50", "W51", "🥊"], ["W52", "W52", "👥"], ["W53", "W53", "🐀"], ["W54", "W54", "🐕"], ["W55", "W55", "🐄"], ["W57", "W57", "🐝"], ["W58", "W58", "🐊"], ["W50", "W64", "🐾"],
+			["W65", "W66", "🛁"], ["W67", "W68", "🏊"], ["W65", "W74", "🌊"], ["W75", "W75", "🛏️"], ["W78", "W78", "🤢"], ["W79", "W79", "🍖"], ["W75", "W84", "😮‍💨"],
+			["W85", "W87", "🔌"], ["W88", "W91", "☢️"], ["W92", "W92", "🥵"], ["W93", "W93", "🥶"], ["W94", "W94", "🤿"], ["W99", "W99", "❔"],
+			["X00", "X09", "🔥"], ["X10", "X19", "♨️"], ["X20", "X20", "🐍"], ["X21", "X21", "🕷️"], ["X22", "X22", "🦂"], ["X23", "X23", "🐝"], ["X29", "X29", "🌿"], ["X20", "X29", "🐛"],
+			["X30", "X30", "🥵"], ["X31", "X31", "🥶"], ["X32", "X32", "☀️"], ["X33", "X33", "⚡"], ["X34", "X34", "🏚️"], ["X35", "X35", "🌋"], ["X36", "X36", "🏔️"], ["X37", "X37", "🌪️"], ["X38", "X38", "🌊"], ["X39", "X39", "🌍"],
+			["X45", "X45", "🍺"], ["X47", "X47", "💨"], ["X48", "X48", "🧪"], ["X40", "X49", "💊"], ["X50", "X50", "🏋️"], ["X51", "X51", "🧳"], ["X53", "X53", "🍽️"], ["X54", "X54", "🚰"], ["X50", "X57", "😓"], ["X58", "X59", "❔"],
+			["X60", "X69", "💊"], ["X70", "X70", "🪢"], ["X71", "X71", "🌊"], ["X72", "X74", "🔫"], ["X75", "X75", "💣"], ["X76", "X76", "🔥"], ["X77", "X77", "♨️"], ["X78", "X78", "🔪"], ["X79", "X79", "🪨"], ["X80", "X80", "🏢"], ["X81", "X81", "🚦"], ["X82", "X82", "🚗"], ["X83", "X84", "⚠️"],
+			["X93", "X95", "🔫"], ["X96", "X96", "💣"], ["X97", "X97", "🔥"], ["X98", "X98", "♨️"], ["X99", "X99", "🔪"], ["Y00", "Y00", "🪨"], ["Y01", "Y01", "🏢"], ["Y02", "Y03", "🚗"], ["Y04", "Y04", "👊"], ["Y06", "Y07", "💔"], ["Y08", "Y09", "❔"], ["X85", "Y09", "⚠️"],
+			["Y10", "Y19", "💊"], ["Y22", "Y24", "🔫"], ["Y25", "Y25", "💣"], ["Y26", "Y26", "🔥"], ["Y28", "Y28", "🔪"], ["Y29", "Y29", "🪨"], ["Y30", "Y31", "⬇️"], ["Y32", "Y32", "🚗"], ["Y34", "Y34", "🤷"]];
+		const VICTIM = ["Pedestre", "Ciclista", "Motociclista", "Ocupante de triciclo", "Ocupante de carro", "Ocupante de caminhonete", "Ocupante de caminhão", "Ocupante de ônibus"];
+		const TARGET = ["pedestre ou animal", "bicicleta", "moto ou triciclo", "carro ou caminhonete", "caminhão ou ônibus", "trem", "veículo não motorizado", "objeto fixo"];
+		const NAMES = {
+			V80: "Cavaleiro ou veículo de tração animal", V81: "Trem ou veículo ferroviário", V83: "Veículo especial industrial", V84: "Veículo especial agrícola", V87: "Colisão entre veículos de tipos especificados", V88: "Acidente não de trânsito", V89: "Acidente com veículo de tipo não especificado",
+			V90: "Embarcação: naufrágio com afogamento", V92: "Afogamento por queda de embarcação", V95: "Aeronave motorizada", V96: "Aeronave sem motor", V98: "Outros acidentes de transporte", V99: "Acidente de transporte não especificado",
+			W01: "Escorregão, tropeção ou passo em falso", W03: "Queda por empurrão ou colisão com outra pessoa", W06: "Queda de cama", W10: "Queda em escada ou degraus", W11: "Queda de escada de mão", W12: "Queda de andaime", W13: "Queda de edifício", W14: "Queda de árvore", W17: "Outra queda de um nível a outro", W18: "Outra queda no mesmo nível", W19: "Queda sem especificação",
+			W25: "Contato com vidro cortante", W26: "Contato com faca ou objeto cortante", W32: "Disparo acidental de arma curta", W34: "Disparo acidental de outra arma de fogo", W69: "Afogamento em águas naturais", W65: "Afogamento em banheira", W67: "Afogamento em piscina", W73: "Outro afogamento especificado", W74: "Afogamento não especificado",
+			W75: "Sufocação na cama", W76: "Enforcamento ou estrangulamento acidental", W78: "Inalação de conteúdo gástrico", W79: "Engasgo com alimento", W84: "Risco não especificado à respiração", W85: "Linha de transmissão elétrica", W86: "Outra corrente elétrica", W99: "Outros fatores não especificados",
+			X00: "Fogo em edifício", X04: "Substância muito inflamável", X09: "Fumaça, fogo ou chamas não especificados", X33: "Raio", X38: "Inundação", X44: "Envenenamento acidental por outras drogas", X45: "Envenenamento acidental por álcool", X47: "Envenenamento por gases e vapores", X48: "Envenenamento por pesticidas", X59: "Exposição a fator não especificado",
+			X60: "Autointoxicação por analgésicos, antipiréticos e antirreumáticos", X61: "Autointoxicação por antiepilépticos, sedativos, hipnóticos, antiparkinsonianos e psicotrópicos", X62: "Autointoxicação por narcóticos e psicodislépticos", X63: "Autointoxicação por outras drogas que atuam sobre o sistema nervoso autônomo", X64: "Autointoxicação por outras drogas e medicamentos", X65: "Autointoxicação por álcool", X66: "Autointoxicação por solventes orgânicos e hidrocarbonetos halogenados", X67: "Autointoxicação por outros gases e vapores", X68: "Autointoxicação por pesticidas", X69: "Autointoxicação por outros produtos químicos e substâncias nocivas", X70: "Lesão autoprovocada por enforcamento, estrangulamento ou sufocação", X71: "Lesão autoprovocada por afogamento e submersão", X72: "Lesão autoprovocada por disparo de arma de fogo de mão", X73: "Lesão autoprovocada por disparo de espingarda, carabina ou arma de fogo maior", X74: "Lesão autoprovocada por disparo de outra arma de fogo ou não especificada", X75: "Lesão autoprovocada por dispositivo explosivo", X76: "Lesão autoprovocada por fumaça, fogo e chamas", X77: "Lesão autoprovocada por vapor de água, gases ou objetos quentes", X78: "Lesão autoprovocada por objeto cortante ou penetrante", X79: "Lesão autoprovocada por objeto contundente", X80: "Lesão autoprovocada por precipitação de lugar elevado", X81: "Lesão autoprovocada por jogar-se ou deitar-se diante de objeto em movimento", X82: "Lesão autoprovocada por impacto de veículo a motor", X83: "Lesão autoprovocada por outros meios especificados", X84: "Lesão autoprovocada por meios não especificados",
+			X91: "Agressão por enforcamento", X93: "Agressão por disparo de arma curta", X94: "Agressão por disparo de espingarda ou carabina", X95: "Agressão por disparo de outra arma de fogo ou de arma de fogo não especificada", X96: "Agressão por explosivos", X99: "Agressão por objeto cortante ou penetrante", Y00: "Agressão por objeto contundente", Y01: "Agressão por precipitação de lugar elevado", Y04: "Agressão por força corporal", Y05: "Agressão sexual por força física", Y06: "Negligência e abandono", Y07: "Outras síndromes de maus-tratos", Y08: "Agressão por outros meios", Y09: "Agressão por meios não especificados",
+			Y10: "Envenenamento, intenção indeterminada", Y20: "Enforcamento, intenção indeterminada", Y21: "Afogamento, intenção indeterminada", Y22: "Disparo de arma curta, intenção indeterminada", Y23: "Disparo de fuzil ou espingarda, intenção indeterminada", Y24: "Disparo de outra arma de fogo ou de arma de fogo não especificada, intenção indeterminada", Y28: "Objeto cortante, intenção indeterminada", Y29: "Objeto contundente, intenção indeterminada", Y30: "Queda ou precipitação, intenção indeterminada", Y32: "Impacto de veículo, intenção indeterminada", Y33: "Outros fatos especificados, intenção indeterminada", Y34: "Fatos ou eventos não especificados, intenção indeterminada"
+		};
 
-/* Taxa da idade escolhida. Com suavização, agrupa ±2 anos (óbitos somados / população somada).
-   Se a janela não tiver mortes, ela é ampliada até encontrar. A idade 90 (grupo "90+") não é misturada com as demais. */
-function buildProfile(sex,uf,start,smooth){
-  const d=Array(91).fill(0),pop=Array(91).fill(0);
-  for(const r of totalRows) if(r.sex===sex&&r.uf===uf){d[r.age]+=r.deaths;pop[r.age]+=r.population;}
-  const r0=(smooth&&start<90)?2:0; let r=r0,lo,hi,dd,pp;
-  for(;;r++){
-    lo=Math.max(0,start-r); hi=start===90?90:Math.min(89,start+r); dd=0; pp=0;
-    for(let a=lo;a<=hi;a++){dd+=d[a];pp+=pop[a];}
-    if(dd>0||r>=90) break;
-  }
-  const m=pp>0?dd/pp:0, cm=new Map();
-  for(const c of causeRows) if(c.sex===sex&&c.uf===uf&&c.age>=lo&&c.age<=hi) cm.set(c.cause,(cm.get(c.cause)||0)+c.deaths);
-  const codes=[...cm.keys()],w=codes.map(c=>cm.get(c));
-  return {sex,uf,start,m,p:1-Math.exp(-m),lo,hi,r,r0,tab:{codes,w,sum:w.reduce((s,x)=>s+x,0)}};
-}
-function pickCause(){
-  const t=P.tab; if(!t.codes.length) return "";
-  let u=Math.random()*t.sum;
-  for(let i=0;i<t.codes.length;i++){u-=t.w[i]; if(u<0) return t.codes[i];}
-  return t.codes[t.codes.length-1];
-}
-/* Uma vida: risco congelado → tempo de espera exponencial */
-function lifeOnce(start){
-  const h=P.m; if(!(h>0)) return {age:null,code:""};
-  const u=Math.max(Number.MIN_VALUE,Math.random());
-  return {age:start+Math.floor(-Math.log(u)/h),code:pickCause()};
-}
-/* Histograma com largura de barra "redonda" (anos, décadas, séculos, milênios), até ~101 barras.
-   Acima do percentil 99 tudo cai numa barra final (a cauda). */
-const NICE=[1,2,5,10,20,50,100,200,500,1000,2000,5000,10000,20000,50000,100000,200000,500000];
-function unitLabel(w){
-  const n=fmt(w)+(w===1?" ano":" anos");
-  if(w<10) return n;
-  if(w<100) return `${n} (${w===10?"1 década":fmt(w/10)+" décadas"})`;
-  if(w<1000) return `${n} (${w===100?"1 século":fmt(w/100)+" séculos"})`;
-  return `${n} (${w===1000?"1 milênio":fmt(w/1000)+" milênios"})`;
-}
-function histData(ages,curAge){
-  const lo=ages[0], hi=Math.max(lo,Math.round(q(ages,.99)));
-  let w=NICE[NICE.length-1], B=1;
-  for(const c of NICE){ const b=Math.ceil((hi-Math.floor(lo/c)*c+1)/c); if(b<=101){w=c;B=b;break;} }
-  const s=Math.floor(lo/w)*w, cnt=Array(B+1).fill(0);
-  for(const a of ages) cnt[Math.min(B,Math.floor((a-s)/w))]++;
-  const peak=Math.max(...cnt.slice(0,B),1);
-  return {s,w,B,cnt,peak,tailStart:s+B*w,tailN:cnt[B],unit:unitLabel(w),mine:curAge==null?-1:Math.min(B,Math.floor((curAge-s)/w))};
-}
-function simulateMany(start,n){
-  const ages=[],counts=new Map();
-  for(let i=0;i<n;i++){const r=lifeOnce(start); if(r.age===null) continue; ages.push(r.age); counts.set(r.code,(counts.get(r.code)||0)+1);}
-  ages.sort((a,b)=>a-b);
-  return {ages,counts};
-}
-const q=(s,f)=>{const p=(s.length-1)*f,lo=Math.floor(p),hi=Math.ceil(p);return s[lo]+(s[hi]-s[lo])*(p-lo);};
-const fmt=(n,d=0)=>n.toLocaleString("pt-BR",{minimumFractionDigits:d,maximumFractionDigits:d});
+		const key = c => c.charCodeAt(0) * 100 + parseInt(c.slice(1), 10);
+		const inRange = (c, [a, b]) => key(c) >= key(a) && key(c) <= key(b);
+		const findGroup = c => GROUPS.find(g => inRange(c, g));
+		const findBlock = c => BLOCKS.find(b => inRange(c, b));
+		const isSelf = c => c && inRange(c, ["X60", "X84"]);
+		function emojiOf(c) { if (!c) return "❔"; const e = EMOJI.find(r => inRange(c, r)); return e ? e[2] : "❔"; }
+		function nameOf(c) {
+			if (!c) return "Causa não especificada";
+			if (USE_OFFICIAL_NAMES && CID.has(c)) return CID.get(c);
+			if (NAMES[c]) return NAMES[c];
+			const m = c.match(/^V([0-7])(\d)$/);
+			if (m) { const u = +m[2]; const t = u === 8 ? ": acidente sem colisão" : u === 9 ? ": outros acidentes" : " × " + TARGET[u]; return VICTIM[+m[1]] + t; }
+			const b = findBlock(c), g = findGroup(c); return (b || g) ? `${(b || g)[2]} (sem descrição própria)` : "Causa externa";
+		}
+		function moralOf(c) {
+			const g = findGroup(c || "");
+			if (isSelf(c)) return { t: "Sem piada aqui: é uma causa de morte evitável, e conversar sobre isso ajuda, mesmo depois de séculos ou milênios.", crisis: true };
+			if (g && g[2] === "Agressões") return { t: "Sem piada aqui: a violência está entre as maiores causas externas de morte no país.", crisis: false };
+			if (!g) return { t: "Nem o atestado soube explicar. Mistério digno de detetive.", crisis: false };
+			if (g[2] === "Acidentes de transporte") return { t: "Moral da história: olhe para os dois lados. Depois olhe de novo.", crisis: false };
+			if (g[2].startsWith("Eventos")) return { t: "A intenção ficou em branco no atestado. A burocracia também mata, só que em silêncio.", crisis: false };
+			const b = findBlock(c); const n = b ? b[2] : "";
+			if (n === "Quedas") return { t: "O chão sempre vence. Sempre.", crisis: false };
+			if (n.startsWith("Afogamento")) return { t: "Sem doenças, mas com água: ela ainda ganha.", crisis: false };
+			if (n.startsWith("Outros riscos")) return { t: "Mastigue devagar. É sério.", crisis: false };
+			if (n.startsWith("Fumaça")) return { t: "Detector de fumaça custa pouco. Esta lição, nem tanto.", crisis: false };
+			if (n.startsWith("Envenenamento")) return { t: "Rótulos existem por um motivo.", crisis: false };
+			if (n.startsWith("Corrente")) return { t: "Gambiarra: 1. Eletricista: 0.", crisis: false };
+			if (n.includes("animais") || n.includes("natureza")) return { t: "A natureza é fofa até o momento em que deixa de ser.", crisis: false };
+			return { t: "A vida tem seus riscos, mesmo sem doenças.", crisis: false };
+		}
+		/* [idade, texto no feminino, texto no masculino] */
+		const MILESTONES = [
+			[100, "🎂 Centenária! O bolo tem velas demais.", "🎂 Centenário! O bolo tem velas demais."],
+			[204, "Já é mais velha que a Independência do Brasil.", "Já é mais velho que a Independência do Brasil."],
+			[526, "Mais velha que o \"descobrimento\" do Brasil. Viu tudo.", "Mais velho que o \"descobrimento\" do Brasil. Viu tudo."],
+			[1000, "Um milênio. Que cansaço.", "Um milênio. Que cansaço."],
+			[2026, "Já viveu mais do que o calendário que usamos.", "Já viveu mais do que o calendário que usamos."],
+			[5000, "Viu a escrita ser inventada.", "Viu a escrita ser inventada."],
+			[12000, "Viu o fim da última Era do Gelo.", "Viu o fim da última Era do Gelo."]];
 
-/* ---------- Interface ---------- */
-async function loadData(){
-  try{
-    const [a,b]=await Promise.all([fetch(CSV_TOTAL),fetch(CSV_CAUSE)]);
-    if(!a.ok||!b.ok) throw new Error("não encontrei os CSVs");
-    const norm=(rows,c)=>rows.map(r=>({age:num(r.age),sex:r.sex.toUpperCase(),uf:r.uf.toUpperCase(),deaths:num(r.deaths),population:num(r.population),cause:c?r.cause.toUpperCase():""})).filter(r=>Number.isFinite(r.age)&&(r.sex==="M"||r.sex==="F"));
-    totalRows=norm(parseCSV(await a.text()),false); causeRows=norm(parseCSV(await b.text()),true);
-    const ufs=[...new Set(totalRows.map(r=>r.uf))].sort();
-    $("uf").innerHTML=ufs.map(u=>`<option value="${u}">${u} — ${UF_NAMES[u]||u}</option>`).join("");
-    if(ufs.includes("SP")) $("uf").value="SP";
-    $("status").textContent=`Dados carregados: ${fmt(totalRows.length)} perfis e ${fmt(causeRows.length)} linhas por causa.`;
-    $("go").disabled=false;
-  }catch(e){
-    $("status").textContent=`Erro: ${e.message}. Abra a página por um servidor local (ex.: python3 -m http.server) a partir da raiz do projeto; fetch() não funciona com file://.`;
-    $("status").classList.add("error");
-  }
-}
+		/* ---------- Dados e modelo ---------- */
+		const $ = id => document.getElementById(id);
+		let selfInTop = false, totalRows = [], causeRows = [], P = null, many = null, last = null, token = 0;
 
-function resetResults(){
-  token++; $("cvv").classList.add("hidden"); $("lifePanel").classList.add("hidden"); $("manyPanel").classList.add("hidden"); $("sharePanel").classList.add("hidden");
-  $("result").classList.add("hidden"); $("again").disabled=true; last=null; many=null;
-}
+		function parseCSV(text) {
+			const lines = text.trim().split(/\r?\n/), d = lines[0].includes(";") ? ";" : ",";
+			const h = lines.shift().split(d).map(x => x.trim().replace(/^\uFEFF/, "").toLowerCase());
+			return lines.map(l => { const v = l.split(d); return Object.fromEntries(h.map((k, i) => [k, (v[i] ?? "").trim()])); });
+		}
+		const num = x => Number(x);
 
-function startLife(){
-  const start=Number($("age").value), mine=++token;
-  const r=lifeOnce(start); last={...r,start};
-  $("lifePanel").classList.remove("hidden"); $("result").classList.add("hidden"); $("again").disabled=true;
-  $("tree").innerHTML='<span class="muted">A árvore aparece quando a vida acabar.</span>';
-  $("milestone").textContent=["Sem gripe, sem plano de saúde. Só o acaso.","Respirando bem. Por enquanto.","Nenhum resfriado à vista. Cuidado com a calçada."][Math.floor(Math.random()*3)];
-  const end=r.age===null?start+3000:r.age, years=end-start;
-  const dur=window.matchMedia("(prefers-reduced-motion: reduce)").matches?0:Math.min(6500,1200+Math.log10(years+1)*1500);
-  const t0=performance.now(); let shown=-1;
-  const tick=now=>{
-    if(mine!==token) return;
-    const f=dur?Math.min(1,(now-t0)/dur):1, e=1-Math.pow(1-f,2.2), age=start+Math.floor(years*e);
-    if(age!==shown){shown=age;$("counter").textContent=fmt(age);
-      const ms=MILESTONES.filter(m=>m[0]<=age&&m[0]>start).pop(); if(ms) $("milestone").textContent=ms[P.sex==="M"?2:1];}
-    $("progress").style.width=(f*100)+"%";
-    if(f<1) requestAnimationFrame(tick); else finishLife();
-  };
-  $("lifePanel").scrollIntoView({behavior:"smooth",block:"start"});
-  requestAnimationFrame(tick);
-}
+		/* Taxa da idade escolhida. Com suavização, agrupa ±2 anos (óbitos somados / população somada).
+		   Se a janela não tiver mortes, ela é ampliada até encontrar. A idade 90 (grupo "90+") não é misturada com as demais. */
+		function buildProfile(sex, uf, start, smooth) {
+			const d = Array(91).fill(0), pop = Array(91).fill(0);
+			for (const r of totalRows) if (r.sex === sex && r.uf === uf) { d[r.age] += r.deaths; pop[r.age] += r.population; }
+			const r0 = (smooth && start < 90) ? 2 : 0; let r = r0, lo, hi, dd, pp;
+			for (; ; r++) {
+				lo = Math.max(0, start - r); hi = start === 90 ? 90 : Math.min(89, start + r); dd = 0; pp = 0;
+				for (let a = lo; a <= hi; a++) { dd += d[a]; pp += pop[a]; }
+				if (dd > 0 || r >= 90) break;
+			}
+			const m = pp > 0 ? dd / pp : 0, cm = new Map();
+			for (const c of causeRows) if (c.sex === sex && c.uf === uf && c.age >= lo && c.age <= hi) cm.set(c.cause, (cm.get(c.cause) || 0) + c.deaths);
+			const codes = [...cm.keys()], w = codes.map(c => cm.get(c));
+			return { sex, uf, start, m, p: 1 - Math.exp(-m), lo, hi, r, r0, tab: { codes, w, sum: w.reduce((s, x) => s + x, 0) } };
+		}
+		function pickCause() {
+			const t = P.tab; if (!t.codes.length) return "";
+			let u = Math.random() * t.sum;
+			for (let i = 0; i < t.codes.length; i++) { u -= t.w[i]; if (u < 0) return t.codes[i]; }
+			return t.codes[t.codes.length - 1];
+		}
+		/* Uma vida: risco congelado → tempo de espera exponencial */
+		function lifeOnce(start) {
+			const h = P.m; if (!(h > 0)) return { age: null, code: "" };
+			const u = Math.max(Number.MIN_VALUE, Math.random());
+			return { age: start + Math.floor(-Math.log(u) / h), code: pickCause() };
+		}
+		/* Histograma com largura de barra "redonda" (anos, décadas, séculos, milênios), até ~101 barras.
+		   Acima do percentil 99 tudo cai numa barra final (a cauda). */
+		const NICE = [1, 2, 5, 10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000, 20000, 50000, 100000, 200000, 500000];
+		function unitLabel(w) {
+			const n = fmt(w) + (w === 1 ? " ano" : " anos");
+			if (w < 10) return n;
+			if (w < 100) return `${n} (${w === 10 ? "1 década" : fmt(w / 10) + " décadas"})`;
+			if (w < 1000) return `${n} (${w === 100 ? "1 século" : fmt(w / 100) + " séculos"})`;
+			return `${n} (${w === 1000 ? "1 milênio" : fmt(w / 1000) + " milênios"})`;
+		}
+		function histData(ages, curAge) {
+			const lo = ages[0], hi = Math.max(lo, Math.round(q(ages, .99)));
+			let w = NICE[NICE.length - 1], B = 1;
+			for (const c of NICE) { const b = Math.ceil((hi - Math.floor(lo / c) * c + 1) / c); if (b <= 101) { w = c; B = b; break; } }
+			const s = Math.floor(lo / w) * w, cnt = Array(B + 1).fill(0);
+			for (const a of ages) cnt[Math.min(B, Math.floor((a - s) / w))]++;
+			const peak = Math.max(...cnt.slice(0, B), 1);
+			return { s, w, B, cnt, peak, tailStart: s + B * w, tailN: cnt[B], unit: unitLabel(w), mine: curAge == null ? -1 : Math.min(B, Math.floor((curAge - s) / w)) };
+		}
+		function simulateMany(start, n) {
+			const ages = [], counts = new Map();
+			for (let i = 0; i < n; i++) { const r = lifeOnce(start); if (r.age === null) continue; ages.push(r.age); counts.set(r.code, (counts.get(r.code) || 0) + 1); }
+			ages.sort((a, b) => a - b);
+			return { ages, counts };
+		}
+		const q = (s, f) => { const p = (s.length - 1) * f, lo = Math.floor(p), hi = Math.ceil(p); return s[lo] + (s[hi] - s[lo]) * (p - lo); };
+		const fmt = (n, d = 0) => n.toLocaleString("pt-BR", { minimumFractionDigits: d, maximumFractionDigits: d });
 
-function finishLife(){
-  const {age,code,start}=last, ela=P.sex==="F"?"Ela":"Ele";
-  $("again").disabled=false;
-  if(age===null){
-    $("counter").textContent="∞"; $("verdict").textContent="Imortal (por falta de dados)";
-    $("emoji").textContent="♾️"; $("causeName").textContent="Nenhuma morte observada neste perfil"; $("causeCode").textContent="";
-    $("moral").textContent="Taxa zero não prova risco zero: só mostra que a base não tem mortes suficientes."; $("cvv").classList.add("hidden");
-    $("result").classList.remove("hidden"); return;
-  }
-  $("counter").textContent=fmt(age);
-  $("verdict").textContent = age===start ? `${ela} morreu aos ${age}, antes de fazer aniversário.` : `${ela} viveu mais ${fmt(age-start)} anos e morreu aos ${fmt(age)}.`;
-  $("emoji").textContent=emojiOf(code); $("causeName").textContent=nameOf(code); $("causeCode").textContent=code?`CID-10: ${code}`:"";
-  $("moral").textContent=moralOf(code).t;
-  $("result").classList.remove("hidden"); $("result").classList.add("fade");
-  const g=code&&findGroup(code), b=code&&findBlock(code), nodes=[["Capítulo XX","Causas externas de morbidade e mortalidade","V01–Y98"]];
-  if(g) nodes.push(["Grupo",g[2],`${g[0]}–${g[1]}`]);
-  if(b) nodes.push(["Bloco",b[2],`${b[0]}–${b[1]}`]);
-  nodes.push(["Código",`${emojiOf(code)} ${nameOf(code)}`,code||"—"]);
-  $("tree").innerHTML=nodes.map((n,i)=>`<div class="node ${i===0?"root":""} ${i===nodes.length-1?"leaf":""}" style="--d:${i}"><small>${n[0].toUpperCase()} · ${n[2]}</small>${n[1]}</div>`).join("");
-  if(many){renderMany(); $("cvv").classList.toggle("hidden",!(isSelf(code)||selfInTop)); $("manyPanel").classList.remove("hidden"); $("sharePanel").classList.remove("hidden");}
-  setupShare();
-}
+		/* ---------- Interface ---------- */
+		async function loadData() {
+			try {
+				const [a, b, c] = await Promise.all([fetch(CSV_TOTAL), fetch(CSV_CAUSE), fetch(CSV_CID).catch(() => null)]);
+				if (!a.ok || !b.ok) throw new Error("não encontrei os CSVs");
+				const norm = (rows, c) => rows.map(r => ({ age: num(r.age), sex: r.sex.toUpperCase(), uf: r.uf.toUpperCase(), deaths: num(r.deaths), population: num(r.population), cause: c ? r.cause.toUpperCase() : "" })).filter(r => Number.isFinite(r.age) && (r.sex === "M" || r.sex === "F"));
+				totalRows = norm(parseCSV(await a.text()), false); causeRows = norm(parseCSV(await b.text()), true);
+				if (c && c.ok) parseCSV(await c.text()).forEach(r => CID.set(r.code.toUpperCase(), r.name));
+				const ufs = [...new Set(totalRows.map(r => r.uf))].sort();
+				$("uf").innerHTML = ufs.map(u => `<option value="${u}">${u} — ${UF_NAMES[u] || u}</option>`).join("");
+				if (ufs.includes("SP")) $("uf").value = "SP";
+				$("status").textContent = `Dados carregados: ${fmt(totalRows.length)} perfis e ${fmt(causeRows.length)} linhas por causa.`;
+				$("go").disabled = false;
+			} catch (e) {
+				$("status").textContent = `Erro: ${e.message}. Abra a página por um servidor local (ex.: python3 -m http.server) a partir da raiz do projeto; fetch() não funciona com file://.`;
+				$("status").classList.add("error");
+			}
+		}
 
-function renderMany(){
-  const {ages,counts}=many, n=ages.length, start=last.start;
-  $("manyTitle").textContent=`E em ${fmt(n)} vidas?`;
-  $("mean").textContent=fmt(ages.reduce((a,b)=>a+b,0)/n,1);
-  $("median").textContent=fmt(q(ages,.5),0);
-  $("range").textContent=`${fmt(q(ages,.1))}–${fmt(q(ages,.9))}`;
-  $("max").textContent=fmt(ages[n-1]);
-  const pc=t=>100*ages.filter(a=>a>t).length/n, parts=[];
-  if(start<100) parts.push(`${fmt(pc(100),1)}% passaram dos 100 anos`);
-  if(start<1000&&pc(1000)>0) parts.push(`${fmt(pc(1000),1)}% chegaram a mil`);
-  parts.push(`${fmt(100*ages.filter(a=>a<start+10).length/n,1)}% não passaram de mais 10 anos`);
-  $("funFact").textContent="Entre as vidas simuladas: "+parts.join("; ")+".";
-  const H=histData(ages,last&&last.age!==null?last.age:null);
-  $("hist").innerHTML=H.cnt.map((c,i)=>{
-    const tail=i===H.B; if(tail&&!c) return "";
-    const from=H.s+i*H.w, tip=tail?`${fmt(c)} vidas acima de ${fmt(H.tailStart-1)} anos`:`${fmt(c)} vidas · ${fmt(from)}–${fmt(from+H.w-1)} anos`;
-    return `<div class="bar ${tail?"tail":""} ${i===H.mine?"me":""}" title="${tip}" style="height:${Math.max(1,Math.min(c,H.peak)/H.peak*100)}%"></div>`;
-  }).join("");
-  $("histLabels").innerHTML=`<span>${fmt(H.s)}</span><span>${fmt(Math.round((H.s+H.tailStart)/2))}</span><span>${fmt(H.tailStart)}${H.tailN?"+":""} anos</span>`;
-  $("histLegend").innerHTML=`Cada barra: ${H.unit}.<br><span class="sw" style="background:#d9a894"></span>vidas simuladas <span class="sw" style="background:var(--rust)"></span>a vida que você acabou de ver`
-    +(H.tailN?` <span class="sw" style="background:var(--sage)"></span>cauda: ${fmt(100*H.tailN/n,1)}% das vidas passaram de ${fmt(H.tailStart-1)} anos e estão somadas numa barra só${H.tailN>H.peak?" (altura cortada)":""}.`:"");
-  const sorted=[...counts.entries()].sort((a,b)=>b[1]-a[1]), top=sorted.slice(0,12), mx=top[0][1]; selfInTop=top.some(e=>isSelf(e[0]));
-  const rest=sorted.slice(12).reduce((s,e)=>s+e[1],0);
-  $("bars").innerHTML=top.map(([c,k])=>`<div class="cause-row ${last&&c===last.code?"me":""}"><div class="t"><span>${emojiOf(c)} ${nameOf(c)} <span class="muted">${c}</span></span><span>${fmt(100*k/n,1)}%</span></div><div class="track"><i style="width:${k/mx*100}%"></i></div></div>`).join("")
-    +(rest?`<p class="muted">+ ${sorted.length-12} outras causas somam ${fmt(100*rest/n,1)}%.</p>`:"");
-  /* causas mais raras DESTA rodada: contagens da simulação, de baixo para cima (empates sorteados uma vez por rodada) */
-  const t=P.tab, wOf=new Map(t.codes.map((c,i)=>[c,t.w[i]]));
-  const items=many.items||(many.items=[...counts.entries()].map(([c,k])=>({c,k,r:Math.random()})).sort((a,b)=>a.k-b.k||a.r-b.r)), rare=items.slice(0,8);
-  const possible=t.codes.filter((c,i)=>t.w[i]>0).length, unseen=t.codes.filter((c,i)=>t.w[i]>0&&!counts.has(c)).length, ties=items.filter(e=>e.k===items[0].k).length;
-  $("rare").innerHTML=[...rare].reverse().map(e=>`<div class="cause-row ${last&&e.c===last.code?"me":""}"><div class="t"><span>${emojiOf(e.c)} ${nameOf(e.c)} <span class="muted">${e.c}</span></span></div><div class="muted">${fmt(e.k)} ${e.k===1?"morte":"mortes"} · 1 em ${fmt(n/e.k)} vidas · base: ${wOf.get(e.c)} ${wOf.get(e.c)===1?"óbito":"óbitos"}</div></div>`).join("");
-  $("rareNote").textContent=(unseen?`Das ${possible} causas possíveis neste perfil, ${unseen} não apareceram nenhuma vez nestas ${fmt(n)} vidas. `:`Todas as ${possible} causas possíveis apareceram pelo menos uma vez. `)+`Abaixo, as mais raras entre as que apareceram.`+(ties>8?` Mais ${ties-8} causas empatam com ${items[0].k} ${items[0].k===1?"morte":"mortes"}.`:"");
-  if(rare.some(e=>isSelf(e.c))) selfInTop=true;
-  const risk=P.p;
-  $("profileNote").textContent=`Perfil: ${P.sex==="F"?"mulher":"homem"}, ${start} anos, ${UF_NAMES[P.uf]||P.uf}. Risco de morrer por causa externa no próximo ano: ${fmt(risk*100,3)}%${risk>0?` (1 em ${fmt(1/risk)})`:""}.`+(P.r>P.r0?` Sem mortes numa janela menor, a taxa usa as idades ${P.lo}–${P.hi}.`:P.lo!==P.hi?` Taxa suavizada com as idades ${P.lo}–${P.hi}.`:"");
-}
+		function resetResults() {
+			token++; $("cvv").classList.add("hidden"); $("lifePanel").classList.add("hidden"); $("manyPanel").classList.add("hidden"); $("sharePanel").classList.add("hidden");
+			$("result").classList.add("hidden"); $("again").disabled = true; last = null; many = null;
+		}
 
-function runAll(){
-  const start=Number($("age").value), sex=$("sex").value, uf=$("uf").value, n=Number($("runs").value);
-  P=buildProfile(sex,uf,start,$("smooth").checked); many=simulateMany(start,n);
-  $("manyPanel").classList.add("hidden"); $("sharePanel").classList.add("hidden");
-  startLife();
-}
-function again(){ startLife(); }
+		function startLife() {
+			const start = Number($("age").value), mine = ++token;
+			const r = lifeOnce(start); last = { ...r, start };
+			$("lifePanel").classList.remove("hidden"); $("result").classList.add("hidden"); $("again").disabled = true;
+			$("tree").innerHTML = '<span class="muted">A árvore aparece quando a vida acabar.</span>';
+			$("milestone").textContent = ["Sem gripe, sem plano de saúde. Só o acaso.", "Respirando bem. Por enquanto.", "Nenhum resfriado à vista. Cuidado com a calçada."][Math.floor(Math.random() * 3)];
+			const end = r.age === null ? start + 3000 : r.age, years = end - start;
+			const dur = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : Math.min(6500, 1200 + Math.log10(years + 1) * 1500);
+			const t0 = performance.now(); let shown = -1;
+			const tick = now => {
+				if (mine !== token) return;
+				const f = dur ? Math.min(1, (now - t0) / dur) : 1, e = 1 - Math.pow(1 - f, 2.2), age = start + Math.floor(years * e);
+				if (age !== shown) {
+					shown = age; $("counter").textContent = fmt(age);
+					const ms = MILESTONES.filter(m => m[0] <= age && m[0] > start).pop(); if (ms) $("milestone").textContent = ms[P.sex === "M" ? 2 : 1];
+				}
+				$("progress").style.width = (f * 100) + "%";
+				if (f < 1) requestAnimationFrame(tick); else finishLife();
+			};
+			$("lifePanel").scrollIntoView({ behavior: "smooth", block: "start" });
+			requestAnimationFrame(tick);
+		}
 
-/* ---------- Compartilhar ---------- */
-function shareText(){
-  const who=`${P.sex==="F"?"uma mulher":"um homem"} de ${last.start} anos (${P.uf})`;
-  return `Sorteei uma vida possível num mundo sem doenças: ${who} viveria até os ${fmt(last.age)} anos e morreria de "${nameOf(last.code)}" ${emojiOf(last.code)}. E você?`;
-}
-function setupShare(){
-  const probe=new File([""],"vida-longa.png",{type:"image/png"});
-  const can=!!(navigator.canShare&&navigator.share&&navigator.canShare({files:[probe]}));
-  const mobile=window.matchMedia("(pointer: coarse)").matches;
-  $("share").classList.toggle("hidden",!can);
-  $("dl").classList.toggle("hidden",can&&mobile);
-}
-function wrap(ctx,text,x,y,maxW,lh){
-  let line="";
-  for(const w of text.split(" ")){const test=line+w+" "; if(ctx.measureText(test).width>maxW&&line){ctx.fillText(line.trim(),x,y);line=w+" ";y+=lh;}else line=test;}
-  ctx.fillText(line.trim(),x,y); return y;
-}
-function makeImage(){
-  const W=1080,H=1350,c=document.createElement("canvas"); c.width=W;c.height=H; const x=c.getContext("2d");
-  x.fillStyle="#f5f1e9"; x.fillRect(0,0,W,H); x.strokeStyle="#e8e0d4"; x.lineWidth=4; x.strokeRect(30,30,W-60,H-60);
-  x.textAlign="center"; x.fillStyle="#29251f"; x.font="800 34px system-ui,sans-serif"; x.fillText("VIDA",W/2-52,120); x.fillStyle="#b85d3f"; x.fillText("LONGA",W/2+62,120);
-  x.fillStyle="#81796e"; x.font="30px system-ui,sans-serif";
-  x.fillText(`Perfil: ${P.sex==="F"?"mulher":"homem"}, ${last.start} anos, ${UF_NAMES[P.uf]||P.uf}`,W/2,190);
-  x.fillText("Uma vida possível, sorteada ao acaso",W/2,265);x.fillText("num mundo sem doenças, duraria até",W/2,310);
-  x.fillStyle="#b85d3f"; x.font="230px Georgia,serif"; x.fillText(last.age===null?"∞":fmt(last.age),W/2,500);
-  x.fillStyle="#81796e"; x.font="34px system-ui,sans-serif"; x.fillText("anos",W/2,590);
-  x.fillStyle="#b85d3f"; x.font="800 24px system-ui,sans-serif"; x.fillText("C A U S A   D A   M O R T E",W/2,640);
-  x.font="140px sans-serif"; x.fillText(emojiOf(last.code),W/2,775);
-  x.fillStyle="#29251f"; x.font="500 46px Georgia,serif"; const yEnd=wrap(x,nameOf(last.code),W/2,850,900,56);
-  x.fillStyle="#81796e"; x.font="26px system-ui,sans-serif"; if(last.code) x.fillText(`CID-10: ${last.code}`,W/2,yEnd+50);
-  const ages=many.ages,HD=histData(ages,last.age),bw=860/(HD.B+(HD.tailN?1:0));
-  HD.cnt.forEach((v,i)=>{if(i===HD.B&&!v)return; x.fillStyle=i===HD.mine?"#b85d3f":(i===HD.B?"#75806a":"#d9a894"); const hh=Math.max(2,Math.min(v,HD.peak)/HD.peak*110); x.fillRect(110+i*bw,1150-hh,Math.max(1,bw-2),hh);});
-  x.fillStyle="#81796e"; x.font="20px system-ui,sans-serif"; x.fillText(`Cada barra: ${HD.unit}`+(HD.tailN?" · última barra = cauda":""),W/2,1176);
-  x.fillStyle="#81796e"; x.font="24px system-ui,sans-serif";
-  x.fillText(`Em ${fmt(ages.length)} vidas: média de ${fmt(ages.reduce((a,b)=>a+b,0)/ages.length)} anos, mediana de ${fmt(q(ages,.5))}`,W/2,1215);
-  x.fillText(`E se não morrêssemos mais de doença alguma? · ${REPO_URL.replace("https://","")}`,W/2,1265);
-  return c;
-}
-const blobOf = () => new Promise(r=>makeImage().toBlob(r,"image/png"));
-async function download(){const b=await blobOf(),a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="vida-longa.png";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);}
-$("dl").onclick=download;
-$("share").onclick=async()=>{
-  const file=new File([await blobOf()],"vida-longa.png",{type:"image/png"});
-  try{await navigator.share({files:[file],text:shareText()});}
-  catch(e){if(e.name!=="AbortError") download();}
-};
+		function finishLife() {
+			const { age, code, start } = last, ela = P.sex === "F" ? "Ela" : "Ele";
+			$("again").disabled = false;
+			if (age === null) {
+				$("counter").textContent = "∞"; $("verdict").textContent = "Imortal (por falta de dados)";
+				$("emoji").textContent = "♾️"; $("causeName").textContent = "Nenhuma morte observada neste perfil"; $("causeCode").textContent = "";
+				$("moral").textContent = "Taxa zero não prova risco zero: só mostra que a base não tem mortes suficientes."; $("cvv").classList.add("hidden");
+				$("result").classList.remove("hidden"); return;
+			}
+			$("counter").textContent = fmt(age);
+			$("verdict").textContent = age === start ? `${ela} morreu aos ${age}, antes de fazer aniversário.` : `${ela} viveu mais ${fmt(age - start)} anos e morreu aos ${fmt(age)}.`;
+			$("emoji").textContent = emojiOf(code); $("causeName").textContent = nameOf(code); $("causeCode").textContent = code ? `CID-10: ${code}` : "";
+			$("moral").textContent = moralOf(code).t;
+			$("result").classList.remove("hidden"); $("result").classList.add("fade");
+			const g = code && findGroup(code), b = code && findBlock(code), nodes = [["Capítulo XX", "Causas externas de morbidade e mortalidade", "V01–Y98"]];
+			if (g) nodes.push(["Grupo", g[2], `${g[0]}–${g[1]}`]);
+			if (b) nodes.push(["Bloco", b[2], `${b[0]}–${b[1]}`]);
+			nodes.push(["Código", `${emojiOf(code)} ${nameOf(code)}`, code || "—"]);
+			$("tree").innerHTML = nodes.map((n, i) => `<div class="node ${i === 0 ? "root" : ""} ${i === nodes.length - 1 ? "leaf" : ""}" style="--d:${i}"><small>${n[0].toUpperCase()} · ${n[2]}</small>${n[1]}</div>`).join("");
+			if (many) { renderMany(); $("cvv").classList.toggle("hidden", !(isSelf(code) || selfInTop)); $("manyPanel").classList.remove("hidden"); $("sharePanel").classList.remove("hidden"); }
+			setupShare();
+		}
 
-$("age").addEventListener("input",()=>$("ageOut").textContent=$("age").value);
-$("go").onclick=()=>{try{runAll();}catch(e){$("status").textContent=e.message;$("status").classList.add("error");}};
-$("again").onclick=again;
-$("reset").onclick=()=>{resetResults();$("age").value=30;$("ageOut").textContent="30";$("sex").value="F";$("runs").value="10000";$("smooth").checked=true;if([...$("uf").options].some(o=>o.value==="SP"))$("uf").value="SP";window.scrollTo({top:0,behavior:"smooth"});};
-$("repo").href=REPO_URL;
-loadData();
-</script>
+		function renderMany() {
+			const { ages, counts } = many, n = ages.length, start = last.start;
+			$("manyTitle").textContent = `E em ${fmt(n)} vidas?`;
+			$("mean").textContent = fmt(ages.reduce((a, b) => a + b, 0) / n, 1);
+			$("median").textContent = fmt(q(ages, .5), 0);
+			$("range").textContent = `${fmt(q(ages, .1))}–${fmt(q(ages, .9))}`;
+			$("max").textContent = fmt(ages[n - 1]);
+			const pc = t => 100 * ages.filter(a => a > t).length / n, parts = [];
+			if (start < 100) parts.push(`${fmt(pc(100), 1)}% passaram dos 100 anos`);
+			if (start < 1000 && pc(1000) > 0) parts.push(`${fmt(pc(1000), 1)}% chegaram a mil`);
+			parts.push(`${fmt(100 * ages.filter(a => a < start + 10).length / n, 1)}% não passaram de mais 10 anos`);
+			$("funFact").textContent = "Entre as vidas simuladas: " + parts.join("; ") + ".";
+			const H = histData(ages, last && last.age !== null ? last.age : null);
+			$("hist").innerHTML = H.cnt.map((c, i) => {
+				const tail = i === H.B; if (tail && !c) return "";
+				const from = H.s + i * H.w, tip = tail ? `${fmt(c)} vidas acima de ${fmt(H.tailStart - 1)} anos` : `${fmt(c)} vidas · ${fmt(from)}–${fmt(from + H.w - 1)} anos`;
+				return `<div class="bar ${tail ? "tail" : ""} ${i === H.mine ? "me" : ""}" title="${tip}" style="height:${Math.max(1, Math.min(c, H.peak) / H.peak * 100)}%"></div>`;
+			}).join("");
+			$("histLabels").innerHTML = `<span>${fmt(H.s)}</span><span>${fmt(Math.round((H.s + H.tailStart) / 2))}</span><span>${fmt(H.tailStart)}${H.tailN ? "+" : ""} anos</span>`;
+			$("histLegend").innerHTML = `Cada barra: ${H.unit}.<br><span class="sw" style="background:#d9a894"></span>vidas simuladas <span class="sw" style="background:var(--rust)"></span>a vida que você acabou de ver`
+				+ (H.tailN ? ` <span class="sw" style="background:var(--sage)"></span>cauda: ${fmt(100 * H.tailN / n, 1)}% das vidas passaram de ${fmt(H.tailStart - 1)} anos e estão somadas numa barra só${H.tailN > H.peak ? " (altura cortada)" : ""}.` : "");
+			const sorted = [...counts.entries()].sort((a, b) => b[1] - a[1]), top = sorted.slice(0, 12), mx = top[0][1]; selfInTop = top.some(e => isSelf(e[0]));
+			const rest = sorted.slice(12).reduce((s, e) => s + e[1], 0);
+			$("bars").innerHTML = top.map(([c, k]) => `<div class="cause-row ${last && c === last.code ? "me" : ""}"><div class="t"><span>${emojiOf(c)} ${nameOf(c)} <span class="muted">${c}</span></span><span>${fmt(100 * k / n, 1)}%</span></div><div class="track"><i style="width:${k / mx * 100}%"></i></div></div>`).join("")
+				+ (rest ? `<p class="muted">+ ${sorted.length - 12} outras causas somam ${fmt(100 * rest / n, 1)}%.</p>` : "");
+			/* causas mais raras DESTA rodada: contagens da simulação, de baixo para cima (empates sorteados uma vez por rodada) */
+			const t = P.tab, wOf = new Map(t.codes.map((c, i) => [c, t.w[i]]));
+			const items = many.items || (many.items = [...counts.entries()].map(([c, k]) => ({ c, k, r: Math.random() })).sort((a, b) => a.k - b.k || a.r - b.r)), rare = items.slice(0, 8);
+			const possible = t.codes.filter((c, i) => t.w[i] > 0).length, unseen = t.codes.filter((c, i) => t.w[i] > 0 && !counts.has(c)).length, ties = items.filter(e => e.k === items[0].k).length;
+			$("rare").innerHTML = [...rare].reverse().map(e => `<div class="cause-row ${last && e.c === last.code ? "me" : ""}"><div class="t"><span>${emojiOf(e.c)} ${nameOf(e.c)} <span class="muted">${e.c}</span></span></div><div class="muted">${fmt(e.k)} ${e.k === 1 ? "morte" : "mortes"} · 1 em ${fmt(n / e.k)} vidas · base: ${wOf.get(e.c)} ${wOf.get(e.c) === 1 ? "óbito" : "óbitos"}</div></div>`).join("");
+			$("rareNote").textContent = (unseen ? `Das ${possible} causas possíveis neste perfil, ${unseen} não apareceram nenhuma vez nestas ${fmt(n)} vidas. ` : `Todas as ${possible} causas possíveis apareceram pelo menos uma vez. `) + `Abaixo, as mais raras entre as que apareceram.` + (ties > 8 ? ` Mais ${ties - 8} causas empatam com ${items[0].k} ${items[0].k === 1 ? "morte" : "mortes"}.` : "");
+			if (rare.some(e => isSelf(e.c))) selfInTop = true;
+			const risk = P.p;
+			$("profileNote").textContent = `Perfil: ${P.sex === "F" ? "mulher" : "homem"}, ${start} anos, ${UF_NAMES[P.uf] || P.uf}. Risco de morrer por causa externa no próximo ano: ${fmt(risk * 100, 3)}%${risk > 0 ? ` (1 em ${fmt(1 / risk)})` : ""}.` + (P.r > P.r0 ? ` Sem mortes numa janela menor, a taxa usa as idades ${P.lo}–${P.hi}.` : P.lo !== P.hi ? ` Taxa suavizada com as idades ${P.lo}–${P.hi}.` : "");
+		}
+
+		function runAll() {
+			const start = Number($("age").value), sex = $("sex").value, uf = $("uf").value, n = Number($("runs").value);
+			P = buildProfile(sex, uf, start, $("smooth").checked); many = simulateMany(start, n);
+			$("manyPanel").classList.add("hidden"); $("sharePanel").classList.add("hidden");
+			startLife();
+		}
+		function again() { startLife(); }
+
+		/* ---------- Compartilhar ---------- */
+		function shareText() {
+			const who = `${P.sex === "F" ? "uma mulher" : "um homem"} de ${last.start} anos (${P.uf})`;
+			return `Sorteei uma vida possível num mundo sem doenças: ${who} viveria até os ${fmt(last.age)} anos e morreria de "${nameOf(last.code)}" ${emojiOf(last.code)}. E você?`;
+		}
+		function setupShare() {
+			const probe = new File([""], "vida-longa.png", { type: "image/png" });
+			const can = !!(navigator.canShare && navigator.share && navigator.canShare({ files: [probe] }));
+			const mobile = window.matchMedia("(pointer: coarse)").matches;
+			$("share").classList.toggle("hidden", !can);
+			$("dl").classList.toggle("hidden", can && mobile);
+		}
+		function wrap(ctx, text, x, y, maxW, lh) {
+			let line = "";
+			for (const w of text.split(" ")) { const test = line + w + " "; if (ctx.measureText(test).width > maxW && line) { ctx.fillText(line.trim(), x, y); line = w + " "; y += lh; } else line = test; }
+			ctx.fillText(line.trim(), x, y); return y;
+		}
+		function makeImage() {
+			const W = 1080, H = 1350, c = document.createElement("canvas"); c.width = W; c.height = H; const x = c.getContext("2d");
+			x.fillStyle = "#f5f1e9"; x.fillRect(0, 0, W, H); x.strokeStyle = "#e8e0d4"; x.lineWidth = 4; x.strokeRect(30, 30, W - 60, H - 60);
+			x.textAlign = "center"; x.fillStyle = "#29251f"; x.font = "800 34px system-ui,sans-serif"; x.fillText("VIDA", W / 2 - 52, 120); x.fillStyle = "#b85d3f"; x.fillText("LONGA", W / 2 + 62, 120);
+			x.fillStyle = "#81796e"; x.font = "30px system-ui,sans-serif";
+			x.fillText(`Perfil: ${P.sex === "F" ? "mulher" : "homem"}, ${last.start} anos, ${UF_NAMES[P.uf] || P.uf}`, W / 2, 190);
+			x.fillText("Uma vida possível, sorteada ao acaso", W / 2, 265); x.fillText("num mundo sem doenças, duraria até", W / 2, 310);
+			x.fillStyle = "#b85d3f"; x.font = "230px Georgia,serif"; x.fillText(last.age === null ? "∞" : fmt(last.age), W / 2, 500);
+			x.fillStyle = "#81796e"; x.font = "34px system-ui,sans-serif"; x.fillText("anos", W / 2, 590);
+			x.fillStyle = "#b85d3f"; x.font = "800 24px system-ui,sans-serif"; x.fillText("C A U S A   D A   M O R T E", W / 2, 640);
+			x.font = "140px sans-serif"; x.fillText(emojiOf(last.code), W / 2, 775);
+			x.fillStyle = "#29251f"; x.font = "500 46px Georgia,serif"; const yEnd = wrap(x, nameOf(last.code), W / 2, 850, 900, 56);
+			x.fillStyle = "#81796e"; x.font = "26px system-ui,sans-serif"; if (last.code) x.fillText(`CID-10: ${last.code}`, W / 2, yEnd + 50);
+			const ages = many.ages, HD = histData(ages, last.age), bw = 860 / (HD.B + (HD.tailN ? 1 : 0));
+			HD.cnt.forEach((v, i) => { if (i === HD.B && !v) return; x.fillStyle = i === HD.mine ? "#b85d3f" : (i === HD.B ? "#75806a" : "#d9a894"); const hh = Math.max(2, Math.min(v, HD.peak) / HD.peak * 110); x.fillRect(110 + i * bw, 1150 - hh, Math.max(1, bw - 2), hh); });
+			x.fillStyle = "#81796e"; x.font = "20px system-ui,sans-serif"; x.fillText(`Cada barra: ${HD.unit}` + (HD.tailN ? " · última barra = cauda" : ""), W / 2, 1176);
+			x.fillStyle = "#81796e"; x.font = "24px system-ui,sans-serif";
+			x.fillText(`Em ${fmt(ages.length)} vidas: média de ${fmt(ages.reduce((a, b) => a + b, 0) / ages.length)} anos, mediana de ${fmt(q(ages, .5))}`, W / 2, 1215);
+			x.fillText(`E se não morrêssemos mais de doença alguma? · ${REPO_URL.replace("https://", "")}`, W / 2, 1265);
+			return c;
+		}
+		const blobOf = () => new Promise(r => makeImage().toBlob(r, "image/png"));
+		async function download() { const b = await blobOf(), a = document.createElement("a"); a.href = URL.createObjectURL(b); a.download = "vida-longa.png"; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 1000); }
+		$("dl").onclick = download;
+		$("share").onclick = async () => {
+			const file = new File([await blobOf()], "vida-longa.png", { type: "image/png" });
+			try { await navigator.share({ files: [file], text: shareText() }); }
+			catch (e) { if (e.name !== "AbortError") download(); }
+		};
+
+		$("age").addEventListener("input", () => $("ageOut").textContent = $("age").value);
+		$("go").onclick = () => { try { runAll(); } catch (e) { $("status").textContent = e.message; $("status").classList.add("error"); } };
+		$("again").onclick = again;
+		$("reset").onclick = () => { resetResults(); $("age").value = 30; $("ageOut").textContent = "30"; $("sex").value = "F"; $("runs").value = "10000"; $("smooth").checked = true; if ([...$("uf").options].some(o => o.value === "SP")) $("uf").value = "SP"; window.scrollTo({ top: 0, behavior: "smooth" }); };
+		$("repo").href = REPO_URL;
+		loadData();
+	</script>
 </body>
+
 </html>
