@@ -10,14 +10,17 @@
 	<!-- Open Graph / Facebook / WhatsApp / LinkedIn -->
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://ferdesmello.github.io/vida-longa/" />
+	<meta property="og:site_name" content="Vida Longa" />
 	<meta property="og:title" content="Vida Longa — E se não morrêssemos mais de velhice ou doença alguma?" />
-	<meta property="og:description" content="Quão longas seriam nossas vidas em um mundo sem mortes por doenças ou envelhecimento?" />
+	<meta property="og:description"
+		content="Quão longas seriam nossas vidas em um mundo sem mortes por doenças ou envelhecimento?" />
 	<meta property="og:image" content="https://ferdesmello.github.io/vida-longa/assets/results_person.jpg" />
 	<!-- Twitter / X -->
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:url" content="https://ferdesmello.github.io/vida-longa/" />
 	<meta name="twitter:title" content="Vida Longa — E se não morrêssemos mais de velhice ou doença alguma?" />
-	<meta name="twitter:description" content="Quão longas seriam nossas vidas em um mundo sem mortes por doenças ou envelhecimento?" />
+	<meta name="twitter:description"
+		content="Quão longas seriam nossas vidas em um mundo sem mortes por doenças ou envelhecimento?" />
 	<meta name="twitter:image" content="https://ferdesmello.github.io/vida-longa/assets/results_person.jpg" />
 
 	<title>Vida Longa — E se não morrêssemos mais de velhice ou doença alguma?</title>
@@ -76,7 +79,7 @@
 		}
 
 		h1 {
-			font: 500 clamp(40px, 7vw, 70px)/1 Georgia, serif;
+			font: 500 clamp(40px, 7vw, 65px)/1 Georgia, serif;
 			letter-spacing: -2px;
 			margin: 0;
 			text-wrap: balance;
@@ -85,6 +88,14 @@
 		h1 em {
 			color: var(--rust);
 			font-weight: 400
+		}
+
+		.subtitle {
+			color: var(--rust);
+			font-size: 12px;
+			font-weight: 700;
+			letter-spacing: 2px;
+			margin: 18px 0px 0px
 		}
 
 		.hero p:last-child {
@@ -391,6 +402,8 @@
 		}
 
 		.histogram {
+			touch-action: pan-y;
+			cursor: crosshair;
 			height: 230px;
 			display: flex;
 			align-items: flex-end;
@@ -561,6 +574,19 @@
 		input[type=range]:disabled {
 			opacity: .4
 		}
+			.bar.hov { filter: brightness(.85) }
+
+		.hist-tip {
+			position: fixed;
+			z-index: 10;
+			pointer-events: none;
+			background: var(--ink);
+			color: #fff;
+			font-size: 12px;
+			padding: 5px 9px;
+			border-radius: 3px;
+			white-space: nowrap
+		}
 	</style>
 </head>
 
@@ -569,8 +595,8 @@
 	<main>
 
 		<section class="hero">
-			<p class="eyebrow">UM EXPERIMENTO MENTAL COM DADOS DE MORTALIDADE BRASILEIRA</p>
 			<h1>E se não morrêssemos mais<br><em>de doenças nem de velhice?</em></h1>
+			<p class="subtitle">UM EXPERIMENTO MENTAL COM DADOS DE MORTALIDADE BRASILEIRA</p>
 			<p>Imagine um mundo sem mortes por câncer, infarto, dengue ou envelhecimento. Mesmo com as doenças curadas e
 				o envelhecimento derrotado, a morte não desapareceria por completo. Sem as causas internas, restariam as
 				externas: acidentes, violência e outros imprevistos. Quão longa seria a vida de uma pessoa nesse mundo?
@@ -707,38 +733,40 @@
 		<section class="panel">
 			<p class="eyebrow">05 / POR TRÁS DA CONTA</p>
 			<details>
-				<summary>Como isso é feito</summary>
-				<p>Para o perfil escolhido (idade, sexo e estado), a taxa anual é <code>m = óbitos / população</code>
-					naquela idade, e a chance de morrer em um ano é <code>p = 1 − exp(−m)</code>. Como o corpo e o
-					comportamento ficam congelados, o risco nunca muda: todo ano é o mesmo dado. Com a suavização
-					ligada, <code>m</code> usa as idades vizinhas (±2 anos): óbitos somados dividido por população
-					somada. Se nem assim houver mortes, a janela se amplia até encontrar, e a página avisa quais idades
-					foram usadas. O tempo de espera até a morte é então exponencial, <code>anos = ⌊−ln(U) / m⌋</code>,
-					com U uniforme em (0,1), e a idade ao morrer é a idade inicial mais esses anos.</p>
-				<p>A causa é sorteada com peso proporcional ao número de óbitos de cada causa naquela idade biológica,
-					sexo e estado. O contador de idade sobe, mas só no calendário: o risco continua o da idade
-					biológica escolhida.</p>
+				<summary>Como isso é calculado</summary>
+				<p>Para o perfil escolhido (idade, sexo e estado), a taxa anual de mortalidade naquela idade biológica é
+					<code>m = óbitos / população</code>, e a chance de morrer em um ano é <code>p = 1 − exp(−m)</code>.
+					Como mantemos essa mesma taxa todo ano (a pessoa mantém a mesma idade biológica e comportamento), o
+					risco nunca muda. Com a suavização ligada, <code>m</code> usa as idades vizinhas (±2 anos): óbitos
+					somados dividido por população somada. Se nem assim houver mortes, a janela se amplia até encontrar,
+					e a página avisa quais idades foram usadas. O tempo de espera até a morte é então exponencial,
+					<code>anos = ⌊−ln(U) / m⌋</code>, com U uniforme em (0,1), e a idade ao morrer é a idade inicial
+					mais esses anos.
+				</p>
+				<p>A causa de morte é sorteada com peso proporcional ao número de óbitos de cada causa naquela idade
+					biológica, sexo e estado. O contador de idade sobe, mas só no calendário: o risco continua o da
+					idade biológica escolhida.</p>
 				<p>Ao escolher "Todos" em sexo ou estado, são somados óbitos e população de todas as categorias. Com
-					"Todas as idades", a taxa é a taxa bruta: todas as mortes divididas por toda a população, o que um
-					cálculo ingênuo faria para um "brasileiro médio". Nesse caso o contador começa na idade média da
-					população, mas o risco continua o mesmo ano após ano.</p>
+					"Todas as idades", a taxa é a taxa bruta: todas as mortes divididas por toda a população, então
+					ingenuamente para um "brasileiro médio". Nesse caso, o contador começa na idade média da população
+					(~36 anos), mas o risco continua o mesmo ano após ano.</p>
 			</details>
 			<details>
 				<summary>Por que alguém viveria tanto?</summary>
-				<p>Com risco constante, o tempo médio de espera é 1/m. Se m é 0,05% ao ano, são em média 2.000 anos.
-					Experimente idades diferentes: o risco varia bastante entre elas, e escolher a idade é escolher o
-					risco. A distribuição é assimétrica, como no decaimento radioativo, só que com tropeções: muita
-					gente morre cedo e uma minoria improvável chega a dezenas de milhares de anos.</p>
+				<p>Com risco constante, o tempo médio de vida é <code>1/m</code>. Se <code>m</code> é 0,05% ao ano,
+					são em média 2.000 anos. Mas muita gente morre cedo e apenas uma minoria improvável chega a dezenas
+					de milhares de anos. Experimente idades diferentes, pois o risco varia bastante entre elas, e
+					escolher a idade biológica é escolher a maior parte do risco.</p>
 			</details>
 			<details>
 				<summary>Isso faz sentido?</summary>
-				<p>Sem doenças e envelhecimento (obrigatório), a sociedade e a condição humana mudariam radicalmente, e
-					os riscos mudariam também. O modelo ignora essas mudanças, a história, o comportamento individual e
-					as diferenças de exposição. "Congelar" o corpo (e o risco) numa certa idade é uma escolha do
-					experimento; outra seria continuar envelhecendo, com o risco mudando a cada aniversário. Também, é
-					improvável que a medicina avance tanto em causas internas e não também em causas externas. Mas isto
-					é um experimento mental, não uma previsão. Ainda assim, é um experimento divertido, até para ver o
-					potencial de tal empreitada.</p>
+				<p>Talvez não muito. Sem doenças e envelhecimento (obrigatório), a sociedade e a condição humana
+					mudariam radicalmente, e os riscos mudariam também. O modelo ignora essas mudanças, a história, o
+					comportamento individual e as diferenças de exposição. "Congelar" o corpo (e o risco) numa certa
+					idade biológicaé uma escolha do experimento; outra seria continuar envelhecendo, com o risco mudando
+					a cada aniversário. Também é improvável que a medicina avance tanto em causas internas e não também
+					em causas externas. Ainda assim, mesmo não sendo uma previsão, é um experimento mental divertido,
+					até para ver o potencial de tal empreitada transumanista.</p>
 			</details>
 			<details>
 				<summary>Dados e limitações</summary>
@@ -746,19 +774,21 @@
 						rel="noopener">SIM/DATASUS</a> (óbitos por causas externas, capítulo XX da CID-10) e <a
 						href="https://www.ibge.gov.br/estatisticas/sociais/populacao/9109-populacao-estimada.html"
 						target="_blank" rel="noopener">estimativas e projeções populacionais do IBGE</a>; ano de
-					referência 2024. Como uma única linha (idade, sexo, estado) define a vida inteira, estados pequenos
-					geram taxas ruidosas. Taxa zero significa "nenhuma morte observada", não "risco zero"; quando não há
-					mortes na idade, a página amplia a janela de idades vizinhas até encontrar algumas (somando óbitos e
-					população, o que pesa mais as idades com mais gente) e avisa. Só se não houver nenhuma morte em todo
-					o perfil a pessoa aparece como imortal.</p>
+					referência 2024. Estados pequenos geram taxas ruidosas. Taxa zero significa "nenhuma morte
+					observada", não "risco zero"; quando não há mortes na idade selecionada, a página amplia a janela de
+					idades vizinhas até encontrar algumas (somando óbitos e população, o que pesa mais as idades com
+					mais gente) e avisa disso. Só se não houver nenhuma morte em todo o perfil, a pessoa aparece como
+					imortal.</p>
+				<p>Algumas mortes por causas raríssimas nos dados do SIM/DATASUS não foram obras inesperadas do acaso,
+					mas oriundas de erros de digitação ou preenchimento. Então fique atento para elas; por exemplo, as
+					mortes por "X52 - Estadia prolongada em ambiente agravitacional."</p>
 			</details>
 		</section>
 
 		<footer>
-			VIDA LONGA · Um experimento mental com dados de mortalidade brasileira ·
-			<a id="repo" target="_blank" rel="noopener">Código no GitHub</a><span id="cvv" class="hidden"><br>Se você ou
-				alguém próximo precisa de apoio emocional: CVV, 188 (24h, gratuito), ou <a href="https://cvv.org.br/"
-					target="_blank" rel="noopener">cvv.org.br</a>.</span>
+			VIDA LONGA · <a id="repo" target="_blank" rel="noopener">Código fonte no GitHub</a><span id="cvv"
+				class="hidden"><br>Se você ou alguém próximo precisa de apoio emocional: CVV, 188 (24h, gratuito), ou <a
+					href="https://cvv.org.br/" target="_blank" rel="noopener">cvv.org.br</a>.</span>
 		</footer>
 	</main>
 
@@ -872,6 +902,25 @@
 		}
 		const num = x => Number(x);
 
+		/* tooltip do histograma: a coluna inteira é área de hover, e funciona com toque */
+		let histTips = [], histTipTimer = null;
+		const histTip = document.createElement("div"); histTip.className = "hist-tip hidden"; document.body.appendChild(histTip);
+		function showHistTip(e) {
+			clearTimeout(histTipTimer);
+			const bars = $("hist").children, n = bars.length; if (!n) return;
+			const rect = $("hist").getBoundingClientRect();
+			const i = Math.min(n - 1, Math.max(0, Math.floor((e.clientX - rect.left) / rect.width * n)));
+			[...bars].forEach((b, k) => b.classList.toggle("hov", k === i));
+			histTip.textContent = histTips[i]; histTip.classList.remove("hidden");
+			const w = histTip.offsetWidth;
+			histTip.style.left = Math.max(4, Math.min(innerWidth - w - 4, e.clientX - w / 2)) + "px";
+			histTip.style.top = Math.max(4, e.clientY - 44) + "px";
+		}
+		function hideHistTip(e) {
+			const hide = () => { histTip.classList.add("hidden"); [...$("hist").children].forEach(b => b.classList.remove("hov")); };
+			if (e && e.pointerType === "touch") histTipTimer = setTimeout(hide, 1500); else hide();
+		}
+
 		/* Taxa da idade escolhida. Com suavização, agrupa ±2 anos (óbitos somados / população somada).
 		   Se a janela não tiver mortes, ela é ampliada até encontrar. A idade 90 (grupo "90+") não é misturada com as demais. */
 		function buildProfile(sex, uf, startArg, smooth) {
@@ -899,7 +948,7 @@
 		}
 		/* descrição do perfil: curta (imagem) ou completa (nota) */
 		function profileLabel(short) {
-			if (P.sex === "ALL" && P.uf === "ALL" && P.all) return short ? `pessoa média do Brasil, ${P.start} anos` : `pessoa média do Brasil (começa aos ${P.start} anos, a idade média da população)`;
+			if (P.sex === "ALL" && P.uf === "ALL" && P.all) return short ? `pessoa média do Brasil` : `pessoa média do Brasil (começa aos ${P.start} anos, a idade média da população)`;
 			const who = P.sex === "F" ? "mulher" : P.sex === "M" ? "homem" : "pessoa";
 			const age = P.all ? (short ? `${P.start} anos (idade média)` : `idade média da população (${P.start} anos)`) : `${P.start} anos`;
 			return `${who}, ${age}, ${P.uf === "ALL" ? "Brasil" : (UF_NAMES[P.uf] || P.uf)}`;
@@ -1032,11 +1081,12 @@
 			parts.push(`${fmt(100 * ages.filter(a => a < start + 10).length / n, 1)}% não passaram de mais 10 anos`);
 			$("funFact").textContent = "Entre as vidas simuladas: " + parts.join("; ") + ".";
 			const H = histData(ages, last && last.age !== null ? last.age : null);
-			$("hist").innerHTML = H.cnt.map((c, i) => {
-				const tail = i === H.B; if (tail && !c) return "";
-				const from = H.s + i * H.w, tip = tail ? `${fmt(c)} vidas acima de ${fmt(H.tailStart - 1)} anos` : `${fmt(c)} vidas · ${fmt(from)}–${fmt(from + H.w - 1)} anos`;
-				return `<div class="bar ${tail ? "tail" : ""} ${i === H.mine ? "me" : ""}" title="${tip}" style="height:${Math.max(1, Math.min(c, H.peak) / H.peak * 100)}%"></div>`;
-			}).join("");
+			const cols = H.cnt.map((c, i) => {
+				const tail = i === H.B; if (tail && !c) return null;
+				const from = H.s + i * H.w, tip = tail ? `${fmt(c)} ${c === 1 ? "vida" : "vidas"} acima de ${fmt(H.tailStart - 1)} anos` : `${fmt(c)} ${c === 1 ? "vida" : "vidas"} · ${fmt(from)}–${fmt(from + H.w - 1)} anos`;
+				return { tip, html: `<div class="bar ${tail ? "tail" : ""} ${i === H.mine ? "me" : ""}" style="height:${Math.max(1, Math.min(c, H.peak) / H.peak * 100)}%"></div>` };
+			}).filter(Boolean);
+			histTips = cols.map(c => c.tip); $("hist").innerHTML = cols.map(c => c.html).join("");
 			$("histLabels").innerHTML = `<span>${fmt(H.s)}</span><span>${fmt(Math.round((H.s + H.tailStart) / 2))}</span><span>${fmt(H.tailStart)}${H.tailN ? "+" : ""} anos</span>`;
 			$("histLegend").innerHTML = `Cada barra: ${H.unit}.<br><span class="sw" style="background:#d9a894"></span>vidas simuladas <span class="sw" style="background:var(--rust)"></span>a vida que você acabou de ver`
 				+ (H.tailN ? ` <span class="sw" style="background:var(--sage)"></span>cauda: ${fmt(100 * H.tailN / n, 1)}% das vidas passaram de ${fmt(H.tailStart - 1)} anos e estão somadas numa barra só${H.tailN > H.peak ? " (altura cortada)" : ""}.` : "");
@@ -1097,7 +1147,7 @@
 			HD.cnt.forEach((v, i) => { if (i === HD.B && !v) return; x.fillStyle = i === HD.mine ? "#b85d3f" : (i === HD.B ? "#75806a" : "#d9a894"); const hh = Math.max(2, Math.min(v, HD.peak) / HD.peak * 110); x.fillRect(110 + i * bw, 1150 - hh, Math.max(1, bw - 2), hh); });
 			x.fillStyle = "#81796e"; x.font = "20px system-ui,sans-serif"; x.fillText(`Cada barra: ${HD.unit}` + (HD.tailN ? " · última barra = cauda" : ""), W / 2, 1176);
 			x.fillStyle = "#81796e"; x.font = "24px system-ui,sans-serif";
-			x.fillText(`Em ${fmt(ages.length)} vidas: média de ${fmt(ages.reduce((a, b) => a + b, 0) / ages.length)} anos, mediana de ${fmt(q(ages, .5))}`, W / 2, 1215);
+			x.fillText(`Em ${fmt(ages.length)} vidas: média de ${fmt(ages.reduce((a, b) => a + b, 0) / ages.length)} anos, mediana de ${fmt(q(ages, .5))} anos`, W / 2, 1215);
 			x.fillText(`${REPO_URL.replace("https://", "")}`, W / 2, 1265);
 			return c;
 		}
@@ -1115,6 +1165,7 @@
 		$("go").onclick = () => { try { runAll(); } catch (e) { $("status").textContent = e.message; $("status").classList.add("error"); } };
 		$("again").onclick = again;
 		$("reset").onclick = () => { resetResults(); $("age").value = 36; $("allAges").checked = false; syncAge(); $("sex").value = "ALL"; $("runs").value = "10000"; $("smooth").checked = true; $("uf").value = "ALL"; window.scrollTo({ top: 0, behavior: "smooth" }); };
+		$("hist").addEventListener("pointermove", showHistTip); $("hist").addEventListener("pointerdown", showHistTip); $("hist").addEventListener("pointerleave", hideHistTip);
 		$("repo").href = REPO_URL;
 		loadData();
 	</script>

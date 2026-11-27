@@ -41,9 +41,10 @@ vida-longa/
 ├── .gitignore
 ├── assets/
 │   ├── favicon.ico
-│   ├── selection.png
-│   ├── results_person.png
-│   └── results_people.png
+│   ├── selection.jpg
+│   ├── results_person.jpg
+│   ├── results_people.jpg
+│   └── vida-longa.png
 ├── data/
 │   ├── Mortalidade_Geral_2024.csv
 │   ├── projecoes_2024_tab1_idade_simples.xlsx
@@ -69,6 +70,10 @@ vida-longa/
 ### Many lives
 
 ![Result for many lives](assets/results_people.jpg)
+
+### Sharable card
+
+![Sharable card](assets/vida-longa.png)
 
 ## Data
 
