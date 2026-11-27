@@ -90,7 +90,7 @@
 			font-weight: 400
 		}
 
-		.subtitle {
+		.explanation {
 			color: var(--rust);
 			font-size: 12px;
 			font-weight: 700;
@@ -591,12 +591,12 @@
 </head>
 
 <body>
-	<header>VIDA <span>LONGA</span></header>
+	<header>VIDA <span>LONGA</span> <span class="explanation"> · UM EXPERIMENTO MENTAL COM DADOS DE MORTALIDADE BRASILEIRA</span></header> 
 	<main>
 
 		<section class="hero">
 			<h1>E se não morrêssemos mais<br><em>de causas naturais?</em></h1>
-			<p class="subtitle">UM EXPERIMENTO MENTAL COM DADOS DE MORTALIDADE BRASILEIRA</p>
+			<!-- <p class="explanation">UM EXPERIMENTO MENTAL COM DADOS DE MORTALIDADE BRASILEIRA</p> -->
 			<p>Imagine um mundo sem mortes por câncer, infarto, dengue ou envelhecimento. Mesmo com as doenças curadas e
 				o envelhecimento derrotado, a morte não desapareceria por completo. Sem as causas naturais, restariam as
 				externas: acidentes, violência e outros imprevistos. Quão longa seria a vida de uma pessoa nesse mundo?
@@ -731,9 +731,9 @@
 		</section>
 
 		<section class="panel">
-			<p class="eyebrow">05 / POR TRÁS DA CONTA</p>
+			<p class="eyebrow">05 / POR TRÁS DO EXPERIMENTO MENTAL</p>
 			<details>
-				<summary>Como isso é calculado</summary>
+				<summary>Como ele é calculado</summary>
 				<p>Para o perfil escolhido (idade, sexo e estado), a taxa anual de mortalidade naquela idade biológica é
 					<code>m = óbitos / população</code>, e a chance de morrer em um ano é <code>p = 1 − exp(−m)</code>.
 					Como mantemos essa mesma taxa todo ano (a pessoa mantém a mesma idade biológica e comportamento), o
@@ -759,7 +759,7 @@
 					escolher a idade biológica é escolher a maior parte do risco.</p>
 			</details>
 			<details>
-				<summary>Isso faz sentido?</summary>
+				<summary>Ele faz sentido?</summary>
 				<p>Talvez não muito. Sem doenças e envelhecimento (obrigatório), a sociedade e a condição humana
 					mudariam radicalmente, e os riscos mudariam também. O modelo ignora essas mudanças, a história, o
 					comportamento individual e as diferenças de exposição. "Congelar" o corpo (e o risco) numa certa
